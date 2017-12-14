@@ -202,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,8 +213,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -238,6 +236,29 @@
                   </li>
                   <li>
                     <a href="#create-a-course" class="toc-h2 toc-link" data-title="Create a course">Create a course</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-course" class="toc-h2 toc-link" data-title="Update a course">Update a course</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-course" class="toc-h2 toc-link" data-title="Delete a course">Delete a course</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-users-in-a-course" class="toc-h2 toc-link" data-title="Get all users in a course">Get all users in a course</a>
+                  </li>
+                  <li>
+                    <a href="#add-a-user-to-a-course" class="toc-h2 toc-link" data-title="Add a user to a course">Add a user to a course</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user-in-a-course" class="toc-h2 toc-link" data-title="Get a user in a course">Get a user in a course</a>
+                  </li>
+                  <li>
+                    <a href="#remove-a-user-from-a-course" class="toc-h2 toc-link" data-title="Remove a user from a course">Remove a user from a course</a>
                   </li>
               </ul>
           </li>
@@ -264,12 +285,10 @@
 <blockquote>
 <p>To test your connection to our API please use</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/echo 
+<pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/echo 
     -d <span class="s1">'{"echo":"Test"}'</span> 
     -X POST 
     -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code>
 </code></pre>
 <blockquote>
 <p>Please note that all other endpoints require authentication via a Bearer Token.</p>
@@ -314,19 +333,9 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </aside>
 
 <aside class="warning">Cerego does NOT currently use OAuth2. It is not possible to perform API calls on an individual user level.</aside>
-<h1 id='courses'>Courses</h1><h2 id='get-all-courses'>Get all courses</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'oauth'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Oauth</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'your_token'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">courses</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses
+<h1 id='courses'>Courses</h1><h2 id='get-all-courses'>Get all courses</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://cerego.com/api/v3/courses"</span><span class="p">;</span>
-<span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -334,13 +343,13 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13421"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-26T04:10:32.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Introduction to Learning and Behavior : 9781305953079"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Introduction to the Cerego API"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"introduction-to-learning-and-behavior-9781305953079-6321ba48-6df3-42b2-bf15-3001977b1110"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"introduction-to-the-cerego-api"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
         </span><span class="s2">"admin-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"student-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -350,28 +359,28 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state-updated-at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instructor-names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"Inst04 Mt"</span><span class="w">
+          </span><span class="s2">"Mr. Professor"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"ic-items-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"assignments-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"external-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"367392"</span><span class="w">
+        </span><span class="s2">"external-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"654321"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"partner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partners"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"865877"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/introduction-to-learning-and-behavior-9781305953079-6321ba48-6df3-42b2-bf15-3001977b1110"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/introduction-to-the-cerego-api"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -386,13 +395,13 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13422"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123457"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-26T06:01:10.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Statistics for the Behavioral Sciences : 9781305647305"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The learning science behind the banana revolution"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"statistics-for-the-behavioral-sciences-9781305647305-ecce4b8e-433d-4e43-a58b-5eda6b6da2db"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the-learning-science-behind-the-banana-revolution"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="s2">"admin-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"student-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -402,16 +411,16 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state-updated-at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instructor-names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"Stephanie Tobin"</span><span class="w">
+          </span><span class="s2">"Dr. Knowitall"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"ic-items-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"assignments-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"external-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"367413"</span><span class="w">
+        </span><span class="s2">"external-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"666666"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"partner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partners"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -420,7 +429,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/statistics-for-the-behavioral-sciences-9781305647305-ecce4b8e-433d-4e43-a58b-5eda6b6da2db"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/the-learning-science-behind-the-banana-revolution"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -437,18 +446,18 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"865877"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04T22:06:29.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/865877/d59fa10pv0.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/123456/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/865877"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/123456"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -601,8 +610,8 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </thead><tbody>
 <tr>
 <td>settings</td>
-<td>no clue</td>
-<td>not sure</td>
+<td>object</td>
+<td><code>daily-new-assignments</code> boolean<br><code>signup-nudges</code> boolean<br><code>daily-new-students</code> boolean<br><code>daily-goals-reached</code> boolean<br><code>weekly-stale-invitations</code> boolean</td>
 </tr>
 <tr>
 <td>role</td>
@@ -640,24 +649,22 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>Cost in cents for to enable the course</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-course'>Get a course</h2><pre class="highlight ruby tab-ruby"><code>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id
+<h2 id='get-a-course'>Get a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38410"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-27T09:52:52.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elsevier Adaptive Learning for Structure and Function of the Body, 14th Edition : 153260_nkane19_1001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Introduction to the Cerego api"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"elsevier-adaptive-learning-for-structure-and-function-of-the-body-14th-edition-153260_nkane19_1001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"introduction-to-the-cerego-api"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"admin-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"student-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -667,28 +674,28 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state-updated-at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instructor-names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Nerea Kane"</span><span class="w">
+        </span><span class="s2">"Mr. Professor"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"ic-items-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"assignments-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17431949894"</span><span class="w">
+      </span><span class="s2">"external-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"partner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partners"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"628253"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/elsevier-adaptive-learning-for-structure-and-function-of-the-body-14th-edition-153260_nkane19_1001"</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/introduction-to-the-cerego-api"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -704,18 +711,18 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"628253"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-05-22T13:39:34.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/628253/61dvdt9c6hmi3o.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/628253/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/628253"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/123456"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -724,26 +731,24 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <p>This endpoint retrieves a course.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://cerego.com/api/v3/courses/:id</code></p>
-<h2 id='create-a-course'>Create a course</h2><pre class="highlight ruby tab-ruby"><code>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses
-    -d <span class="s1">'{"name": "Course Name", "description": "The Description of the Course", "partner_id": 21, "slug": "course-name"}'</span>
+<h2 id='create-a-course'>Create a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses
+    -d <span class="s1">'{"name": "How To Achieve World Domination", "description": "The is pleasant course for those interested in conquering all life all on earth.", "partner_id": 21, "slug": "how-to-achieve-world-domination"}'</span>
     -X POST
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code>
 </code></pre>
 <blockquote>
 <p>If you successfully make your POST request you should receive a response that looks like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38411"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123458"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-14T00:25:58.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Course Name"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Description of the Course"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"course-name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How To Achieve World Domination"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The is pleasant course for those interested in conquering all life all on earth."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"how-to-achieve-world-domination"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"admin-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"student-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -753,7 +758,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unpublished"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state-updated-at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instructor-names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Kyle Stewart"</span><span class="w">
+        </span><span class="s2">"Genghis Khan"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"ic-items-count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"assignments-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -771,7 +776,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/course-name"</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/how-to-achieve-world-domination"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -832,29 +837,427 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>The slug for the course</td>
 </tr>
 </tbody></table>
-<h1 id='images'>Images</h1><h2 id='get-an-image'>Get an image</h2><pre class="highlight ruby tab-ruby"><code></code></pre><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/images/:id
+<h2 id='update-a-course'>Update a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id
+    -d <span class="s1">'{"name": "27 Title You Should not Use In API Documentation", "description": "A comprehensive list of every absurd title you can use for examples in your API documentation.", "slug": "27-titles-you-shouldnt-use-in-api-documentation", "state": "published"}'</span>
+    -X PUT
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code></code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</code></pre>
+<blockquote>
+<p>If you successfully make your POST request you should receive a response that looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"662672"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123459"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-14T00:30:26.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Title You Should not Use In API Documentation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A comprehensive list of every absurd title you can use for examples in your API documentation."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27-titles-you-shouldnt-use-in-api-documentation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"student-users-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal-list-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goals-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reports-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state-updated-at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instructor-names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Ninja Wizard Developer"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"ic-items-count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"assignments-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"external-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"partner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partners"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/courses/27-titles-you-shouldnt-use-in-api-documentation"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"daily-new-assignments"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"signup-nudges"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"daily-new-students"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"daily-goals-reached"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"weekly-stale-invitations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instructor"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"can-edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lti"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percent-started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last-study-time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment-required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates an existing course</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT https://cerego.com/api/v3/courses/:id</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the course</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td><code>published</code> will display all courses that are in a published state <br> <code>unpublished</code> will display all courses that have not yet been published <br> <code>archived</code> will display all courses that have been archived</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>The description of the course</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>string</td>
+<td>The slug for the course</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-course'>Delete a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id
+    -X DELETE
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+</code></pre>
+<blockquote>
+<p>If you successfully make your DELETE request you should receive a 204 No Content</p>
+</blockquote>
+
+<p>This endpoint deletes a course</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://cerego.com/api/v3/courses/:id</code></p>
+
+<aside class="warning">A course must be <code>unpublished</code> or <code>archived</code> to be deleted.</aside>
+<h1 id='users'>Users</h1><h2 id='get-all-users-in-a-course'>Get all users in a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1158898"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-05-25T03:06:08.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abraham Lincoln"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowtoabe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bow.to.abe@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last-logged-in-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-14T18:55:14.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bff7431b-b099-4995-8b63-3b10a20223ab"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses.course_manager.members.studied_via_lti"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"user-partner-id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"daily-new-assignments"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"signup-nudges"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"daily-new-students"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"daily-goals-reached"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weekly-stale-invitations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instructor"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"can-edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lti"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"percent-started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last-study-time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment-required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"total-pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all users that are connected to a specific course.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/courses/:id/users</code></p>
+<h3 id='user-object'>User Object</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>When the course was created</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the user</td>
+</tr>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>The username of the user</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The user&#39;s email</td>
+</tr>
+<tr>
+<td>last-logged-in-at</td>
+<td>datetime</td>
+<td>The last log in by the user</td>
+</tr>
+<tr>
+<td>guid</td>
+<td>string</td>
+<td>An identifier for users that can be used across apps</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td><code>[&quot;courses.course_manager.members.studied_via_lti&quot;, &quot;courses.course_manager.members.studied&quot;, &quot;courses.course_manager.members.invited&quot;, &quot;courses.course_manager.members.no_invitation_sent&quot;]</code> The current study status of the user (priority from left to right)</td>
+</tr>
+</tbody></table>
+<h3 id='meta-2'>Meta</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>role</td>
+<td>string</td>
+<td><code>learner</code> You are a student in the course <br><code>instructor</code> You are teaching the course without permission to edit<br><code>editor</code> You have permission to edit this specific content<br><code>content_manager</code> You have permission to edit all content<br><code>course_manager</code> You have permission to manage to entire course<br><code>admin</code> You have permission to edit everything</td>
+</tr>
+<tr>
+<td>can-edit</td>
+<td>boolean</td>
+<td>The user is allowed to edit the current course</td>
+</tr>
+<tr>
+<td>lti</td>
+<td>boolean</td>
+<td>The user has an LTI account connected</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>float</td>
+<td>The user&#39;s progress on this specific course (<code>0.0</code> is unstarted, <code>1.0</code> is complete)</td>
+</tr>
+<tr>
+<td>percent-started</td>
+<td>float</td>
+<td>The percentage of concepts the user has started (<code>0.0</code> to <code>1.0</code>)</td>
+</tr>
+<tr>
+<td>last-study-time</td>
+<td>datetime</td>
+<td>The time which the user last studied this course</td>
+</tr>
+<tr>
+<td>payment-required</td>
+<td>boolean</td>
+<td>The user needs money to enable this course</td>
+</tr>
+<tr>
+<td>cost</td>
+<td>integer</td>
+<td>Cost in cents for to enable the course</td>
+</tr>
+</tbody></table>
+<h2 id='add-a-user-to-a-course'>Add a user to a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users
+    -d <span class="s1">'{"email": "zaguios@gmail.com", "name": "Christopher Gregorio"}'</span>
+    -X POST
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+</code></pre>
+<blockquote>
+<p>If you successfully make your POST request you should receive a response that looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123460"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-14T19:24:24.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Julius Caesar"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allhailtheromanempire@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all.hail.the.roman.empire@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last-logged-in-at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55d22545-92f2-40eb-9037-f9770c3516a9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses.course_manager.members.invited"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user-partner-id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"daily-new-assignments"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"student"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"can-edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lti"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percent-started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last-study-time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment-required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint adds a user to a course (or creates a new user if one does not exist)</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://cerego.com/api/v3/courses/:id/users</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>yes</td>
+<td>The email of the user you wish to add to the course</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the user you wish to add</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">If an account doesn't already exist, we will send them a welcome email with a link and instructions to set a password.</aside>
+
+<aside class="warning">This endpoint is idempotent. (A user will not be added again if they are already in the course)</aside>
+<h2 id='get-a-user-in-a-course'>Get a user in a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users/:id
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+</code></pre>
+<blockquote>
+<p>If you successfully make your GET request you should receive a response that looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1849768"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-14T19:24:24.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marie Antionette"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cakeeaters"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cake.eaters@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last-logged-in-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-14T20:33:31.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55d22545-92f2-40eb-9037-f9770c3516a9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses.course_manager.members.invited"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user-partner-id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"daily-new-assignments"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"student"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"can-edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lti"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percent-started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last-study-time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment-required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint gets information about a user within a course</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/courses/:id/users/:id</code></p>
+<h2 id='remove-a-user-from-a-course'>Remove a user from a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users/:id
+    -X DELETE
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+</code></pre>
+<blockquote>
+<p>If you successfully make your DELETE request you should receive a 204 No Content</p>
+</blockquote>
+
+<p>This endpoint deletes a user from a course</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>DELETE https://cerego.com/api/v3/courses/:id/users/:id</code></p>
+
+<aside class="notice">Removing a user does NOT clear their memories or progress.</aside>
+<h1 id='images'>Images</h1><h2 id='get-an-image'>Get an image</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/images/:id
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/662672/61evfr7fsl2aco.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/662672/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/662672"</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/123456"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves an image.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://cerego.com/api/v3/images/:id</code></p>
 <h3 id='image-object'>Image Object</h3>
 <table><thead>
@@ -946,8 +1349,6 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
