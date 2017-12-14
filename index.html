@@ -611,7 +611,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>settings</td>
 <td>object</td>
-<td><code>daily-new-assignments</code> boolean<br><code>signup-nudges</code> boolean<br><code>daily-new-students</code> boolean<br><code>daily-goals-reached</code> boolean<br><code>weekly-stale-invitations</code> boolean</td>
+<td><code>daily-new-assignments</code> boolean - Will receive notifications when new assignments become published<br><code>signup-nudges</code> boolean - Will receive steps and advice on getting you set up<br><code>daily-new-students</code> boolean - Will receive notifications about new students joining your courses<br><code>daily-goals-reached</code> boolean - Will receive notifications when students reach an assigned goal<br><code>weekly-stale-invitations</code> boolean - Will receive weekly summary of students who haven&#39;t confirmed their invitation</td>
 </tr>
 <tr>
 <td>role</td>
@@ -1034,7 +1034,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>email</td>
 <td>string</td>
-<td>The user&#39;s email</td>
+<td>The email of the user</td>
 </tr>
 <tr>
 <td>last-logged-in-at</td>
@@ -1049,7 +1049,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>status</td>
 <td>string</td>
-<td><code>[&quot;courses.course_manager.members.studied_via_lti&quot;, &quot;courses.course_manager.members.studied&quot;, &quot;courses.course_manager.members.invited&quot;, &quot;courses.course_manager.members.no_invitation_sent&quot;]</code> The current study status of the user (priority from left to right)</td>
+<td><code>courses.course_manager.members.studied_via_lti</code> Student is connected to the course via LTI<br><code>courses.course_manager.members.studied</code> Student has studied the course, but is not an LTI user<br><code>courses.course_manager.members.invited</code> Student has received an invitation to join the course, but has not yet studied<br><code>courses.course_manager.members.no_invitation_sent</code> No invitation has been sent to the user yet</td>
 </tr>
 </tbody></table>
 <h3 id='meta-2'>Meta</h3>
