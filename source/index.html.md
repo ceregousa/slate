@@ -258,7 +258,7 @@ external-id | integer | The LTI user associated with the course?
 
 Parameter | type | Description
 --------- | --------- | -----------
-settings | object | `daily-new-assignments` boolean<br>`signup-nudges` boolean<br>`daily-new-students` boolean<br>`daily-goals-reached` boolean<br>`weekly-stale-invitations` boolean
+settings | object | `daily-new-assignments` boolean - Will receive notifications when new assignments become published<br>`signup-nudges` boolean - Will receive steps and advice on getting you set up<br>`daily-new-students` boolean - Will receive notifications about new students joining your courses<br>`daily-goals-reached` boolean - Will receive notifications when students reach an assigned goal<br>`weekly-stale-invitations` boolean - Will receive weekly summary of students who haven't confirmed their invitation
 role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` You have permission to edit this specific content<br>`content_manager` You have permission to edit all content<br>`course_manager` You have permission to manage to entire course<br>`admin` You have permission to edit everything
 can-edit | boolean | Determines if you are allowed to edit this content
 progress | float | Your progress on this specific course (`0.0` is unstarted, `1.0` is complete)
@@ -627,10 +627,10 @@ Parameter | type | Description
 created_at | datetime | When the course was created
 name | string | The name of the user
 username | string | The username of the user
-email | string | The user's email
+email | string | The email of the user
 last-logged-in-at | datetime | The last log in by the user
 guid | string | An identifier for users that can be used across apps
-status | string | `["courses.course_manager.members.studied_via_lti", "courses.course_manager.members.studied", "courses.course_manager.members.invited", "courses.course_manager.members.no_invitation_sent"]` The current study status of the user (priority from left to right)
+status | string | `courses.course_manager.members.studied_via_lti` Student is connected to the course via LTI<br>`courses.course_manager.members.studied` Student has studied the course, but is not an LTI user<br>`courses.course_manager.members.invited` Student has received an invitation to join the course, but has not yet studied<br>`courses.course_manager.members.no_invitation_sent` No invitation has been sent to the user yet
 
 ### Meta
 
