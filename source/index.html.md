@@ -585,6 +585,33 @@ state | string | `published` will display all courses that are in a published st
 description | string | The description of the course
 slug | string | The slug for the course
 
+## Delete a course
+
+```ruby
+
+```
+
+```shell
+curl https://cerego.com/api/v3/courses/:id
+    -X DELETE
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+```
+
+```javascript
+
+```
+
+> If you successfully make your DELETE request you should receive a 204 No Content
+
+This endpoint deletes a course
+
+### HTTP Request
+
+`DELETE https://cerego.com/api/v3/courses/:id`
+
+<aside class="warning">A course must be <code>unpublished</code> or <code>archived</code> to be deleted.</aside>
+
 # Images
 
 ## Get an image
