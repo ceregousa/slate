@@ -708,6 +708,82 @@ payment-required | boolean | The user needs money to enable this course
 cost | integer | Cost in cents for to enable the course
 
 
+## Add a user to a course
+
+```ruby
+
+```
+
+```shell
+curl https://cerego.com/api/v3/courses/:id/users
+    -d '{"email": "zaguios@gmail.com", "name": "Christopher Gregorio"}'
+    -X POST
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+```
+
+```javascript
+
+```
+
+> If you successfully make your POST request you should receive a response that looks like this:
+
+```json
+{
+  "data": {
+    "id": "1849768",
+    "type": "users",
+    "attributes": {
+      "created-at": "2017-12-14T19:24:24.000Z",
+      "name": "Christopher Gregorio",
+      "username": "50a9eb30c332013510ef186590d64769",
+      "email": "zaguios@gmail.com",
+      "last-logged-in-at": null,
+      "guid": "55d22545-92f2-40eb-9037-f9770c3516a9",
+      "status": "courses.course_manager.members.invited"
+    },
+    "relationships": {
+      "user-partner-id": {
+        "data": null
+      }
+    },
+    "meta": {
+      "settings": {
+        "notifications": {
+          "daily-new-assignments": true
+        }
+      },
+      "role": "student",
+      "can-edit": false,
+      "lti": false,
+      "progress": 0,
+      "percent-started": 0,
+      "last-study-time": null,
+      "payment-required": false,
+      "cost": null
+    }
+  }
+}
+```
+
+This endpoint adds a user to a course (or creates a new user if one does not exist)
+
+### HTTP Request
+
+`POST https://cerego.com/api/v3/courses/:id/users`
+
+### Request Parameters
+
+Parameter | Type | Required? | Description
+--------- | --------- | --------- | -----------
+email | string | yes | The email of the user you wish to add to the course
+name | string | no | The name of the user you wish to add
+
+
+<aside class="notice">If an account doesn't already exist, we will send them a welcome email with a link and instructions to set a password.</aside>
+
+<aside class="warning">This endpoint is idempotent. (A user will not be added again if they are already in the course)</aside>
+
 # Images
 
 ## Get an image
