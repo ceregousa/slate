@@ -784,6 +784,68 @@ name | string | no | The name of the user you wish to add
 
 <aside class="warning">This endpoint is idempotent. (A user will not be added again if they are already in the course)</aside>
 
+## Get a user in a course
+
+```ruby
+
+```
+
+```shell
+curl https://cerego.com/api/v3/courses/:id/users/:id
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+```
+
+```javascript
+
+```
+
+> If you successfully make your POST request you should receive a response that looks like this:
+
+```json
+{
+  "data": {
+    "id": "1849768",
+    "type": "users",
+    "attributes": {
+      "created-at": "2017-12-14T19:24:24.000Z",
+      "name": "Christopher Gregorio",
+      "username": "50a9eb30c332013510ef186590d64769",
+      "email": "zaguios@gmail.com",
+      "last-logged-in-at": "2017-12-14T20:33:31.000Z",
+      "guid": "55d22545-92f2-40eb-9037-f9770c3516a9",
+      "status": "courses.course_manager.members.invited"
+    },
+    "relationships": {
+      "user-partner-id": {
+        "data": null
+      }
+    },
+    "meta": {
+      "settings": {
+        "notifications": {
+          "daily-new-assignments": true
+        }
+      },
+      "role": "student",
+      "can-edit": false,
+      "lti": false,
+      "progress": 0,
+      "percent-started": 0,
+      "last-study-time": null,
+      "payment-required": false,
+      "cost": null
+    }
+  }
+}
+```
+
+This endpoint gets information about a user within a course
+
+### HTTP Request
+
+`GET https://cerego.com/api/v3/courses/:id/users/:id`
+
 # Images
 
 ## Get an image
