@@ -284,7 +284,7 @@ external-id | integer | The LTI user associated with the course?
 
 Parameter | type | Description
 --------- | --------- | -----------
-settings | no clue | not sure
+settings | object | `daily-new-assignments` boolean<br>`signup-nudges` boolean<br>`daily-new-students` boolean<br>`daily-goals-reached` boolean<br>`weekly-stale-invitations` boolean
 role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` You have permission to edit this specific content<br>`content_manager` You have permission to edit all content<br>`course_manager` You have permission to manage to entire course<br>`admin` You have permission to edit everything
 can-edit | boolean | Determines if you are allowed to edit this content
 progress | float | Your progress on this specific course (`0.0` is unstarted, `1.0` is complete)
@@ -487,6 +487,103 @@ name | string | yes | The name of the course
 partner_id | integer | yes | The partner associated with this course
 description | string | no | The description of the course
 slug | string | no | The slug for the course
+
+## Update a course
+
+```ruby
+
+```
+
+```shell
+curl https://cerego.com/api/v3/courses/:id
+    -d '{"name": "Updated Name", "description": "Updated Description", "slug": "updated-name", "state": "published"}'
+    -X PUT
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+```
+
+```javascript
+
+```
+
+> If you successfully make your POST request you should receive a response that looks like this:
+
+```json
+{
+  "data": {
+    "id": "38414",
+    "type": "courses",
+    "attributes": {
+      "created-at": "2017-12-14T00:30:26.000Z",
+      "name": "New Name",
+      "description": "Updated Description",
+      "slug": "updated-name",
+      "users-count": 1,
+      "admin-users-count": 1,
+      "student-users-count": 0,
+      "goal-list-count": 0,
+      "goals-count": 0,
+      "reports-count": 0,
+      "state": "published",
+      "state-updated-at": null,
+      "instructor-names": [
+        "Kyle Stewart"
+      ],
+      "ic-items-count": null,
+      "assignments-count": 0,
+      "external-id": null
+    },
+    "relationships": {
+      "partner": {
+        "data": {
+          "id": "21",
+          "type": "partners"
+        }
+      },
+      "image": {
+        "data": null
+      }
+    },
+    "links": {
+      "self": "/v3/courses/updated-name"
+    },
+    "meta": {
+      "settings": {
+        "notifications": {
+          "daily-new-assignments": true,
+          "signup-nudges": true,
+          "daily-new-students": true,
+          "daily-goals-reached": true,
+          "weekly-stale-invitations": true
+        }
+      },
+      "role": "instructor",
+      "can-edit": true,
+      "lti": true,
+      "progress": 0,
+      "percent-started": 0,
+      "last-study-time": null,
+      "payment-required": false,
+      "cost": null
+    }
+  }
+}
+```
+
+This endpoint updates an existing course
+
+### HTTP Request
+
+`PUT https://cerego.com/api/v3/courses/:id`
+
+### Request Parameters
+
+Parameter | Type | Description
+--------- | --------- | -----------
+name | string | The name of the course
+state | string | `published` will display all courses that are in a published state <br> `unpublished` will display all courses that have not yet been published <br> `archived` will display all courses that have been archived
+description | string | The description of the course
+slug | string | The slug for the course
 
 # Images
 
