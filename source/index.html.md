@@ -254,7 +254,7 @@ filter[partner_id] | Scopes the courses returned to the partner specified.
 filter[role] | `student` will display all courses that the user id is learning <br> `instructor` will diplay all courses the user id is teaching
 filter[state] | `published` will display all courses that are in a published state <br> `unpublished` will display all courses that have not yet been published <br> `archived` will display all courses that have been archived
 page[number] | Courses are paginated, use this to choose which page you want
-page[size] | The max is `15` - How many courses are listed in each request/page
+page[size] | The default is `15` - How many courses are listed in each request/page
 tab | `published` will display all courses that are in a published state <br> `unpublished` will display all courses that have not yet been published <br> `archived` will display all courses that have been archived
 sort | Orders the results based on the param. <br>Example: `name` - sort in alphabetical order
 
@@ -279,6 +279,19 @@ instructor-names | array[string] | A list of instructor names for the course
 ic-items-count | integer | The amount of instructional items in the course
 assignments-count | integer | The amount of sets and series in course
 external-id | integer | The LTI user associated with the course?
+
+### Meta
+
+Parameter | type | Description
+--------- | --------- | -----------
+settings | no clue | not sure
+role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` You have permission to edit this specific content<br>`content_manager` You have permission to edit all content<br>`course_manager` You have permission to manage to entire course<br>`admin` You have permission to edit everything
+can-edit | boolean | Determines if you are allowed to edit this content
+progress | float | Your progress on this specific course (`0.0` is unstarted, `1.0` is complete)
+percent-started | float | The percentage of concepts you have started (`0.0` to `1.0`)
+last-study-time | datetime | The time which you last studied this course
+payment-required | boolean | You owe money to enable this course
+cost | integer | Cost in cents for to enable the course
 
 ## Get a course
 
