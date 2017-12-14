@@ -391,6 +391,103 @@ This endpoint retrieves a course.
 
 `GET https://cerego.com/api/v3/courses/:id`
 
+## Create a course
+
+```ruby
+
+```
+
+```shell
+curl https://cerego.com/api/v3/courses
+    -d '{"name": "Course Name", "description": "The Description of the Course", "partner_id": 21, "slug": "course-name"}'
+    -X POST
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+```
+
+```javascript
+
+```
+
+> If you successfully make your POST request you should receive a response that looks like this:
+
+```json
+{
+  "data": {
+    "id": "38411",
+    "type": "courses",
+    "attributes": {
+      "created-at": "2017-12-14T00:25:58.000Z",
+      "name": "Course Name",
+      "description": "The Description of the Course",
+      "slug": "course-name",
+      "users-count": 1,
+      "admin-users-count": 0,
+      "student-users-count": 0,
+      "goal-list-count": 0,
+      "goals-count": 0,
+      "reports-count": 0,
+      "state": "unpublished",
+      "state-updated-at": null,
+      "instructor-names": [
+        "Kyle Stewart"
+      ],
+      "ic-items-count": null,
+      "assignments-count": 0,
+      "external-id": null
+    },
+    "relationships": {
+      "partner": {
+        "data": {
+          "id": "21",
+          "type": "partners"
+        }
+      },
+      "image": {
+        "data": null
+      }
+    },
+    "links": {
+      "self": "/v3/courses/course-name"
+    },
+    "meta": {
+      "settings": {
+        "notifications": {
+          "daily-new-assignments": true,
+          "signup-nudges": true,
+          "daily-new-students": true,
+          "daily-goals-reached": true,
+          "weekly-stale-invitations": true
+        }
+      },
+      "role": "instructor",
+      "can-edit": true,
+      "lti": true,
+      "progress": 0,
+      "percent-started": 0,
+      "last-study-time": null,
+      "payment-required": false,
+      "cost": null
+    }
+  }
+}
+```
+
+This endpoint creates a new course
+
+### HTTP Request
+
+`POST https://cerego.com/api/v3/courses`
+
+### Request Parameters
+
+Parameter | Type | Required? | Description
+--------- | --------- | --------- | -----------
+name | string | yes | The name of the course
+partner_id | integer | yes | The partner associated with this course
+description | string | no | The description of the course
+slug | string | no | The slug for the course
+
 # Images
 
 ## Get an image
