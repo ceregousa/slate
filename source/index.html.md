@@ -83,10 +83,6 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 ## Get all courses
 
 ```ruby
-require 'oauth'
-
-api = Oauth::APIClient.authorize!('your_token')
-api.courses.get
 ```
 
 ```shell
@@ -611,6 +607,106 @@ This endpoint deletes a course
 `DELETE https://cerego.com/api/v3/courses/:id`
 
 <aside class="warning">A course must be <code>unpublished</code> or <code>archived</code> to be deleted.</aside>
+
+# Users
+
+## Get all users in a course
+
+```ruby
+
+```
+
+```shell
+curl https://cerego.com/api/v3/courses/:id/users
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+```
+
+```javascript
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": "1158898",
+      "type": "users",
+      "attributes": {
+        "created-at": "2014-05-25T03:06:08.000Z",
+        "name": "Kyle Stewart",
+        "username": "kyle",
+        "email": "kwstewar@gmail.com",
+        "last-logged-in-at": "2017-12-14T18:55:14.000Z",
+        "guid": "bff7431b-b099-4995-8b63-3b10a20223ab",
+        "status": "courses.course_manager.members.studied_via_lti"
+      },
+      "relationships": {
+        "user-partner-id": {
+          "data": null
+        }
+      },
+      "meta": {
+        "settings": {
+          "notifications": {
+            "daily-new-assignments": true,
+            "signup-nudges": true,
+            "daily-new-students": true,
+            "daily-goals-reached": true,
+            "weekly-stale-invitations": true
+          }
+        },
+        "role": "instructor",
+        "can-edit": true,
+        "lti": true,
+        "progress": 0,
+        "percent-started": 0,
+        "last-study-time": null,
+        "payment-required": false,
+        "cost": null
+      }
+    }
+  ],
+  "meta": {
+    "total-pages": 1,
+    "total-count": 1
+  }
+}
+```
+
+This endpoint retrieves all users that are connected to a specific course.
+
+### HTTP Request
+
+`GET https://cerego.com/api/v3/courses/:id/users`
+
+### User Object
+
+Parameter | type | Description
+--------- | --------- | -----------
+created_at | datetime | When the course was created
+name | string | The name of the user
+username | string | The username of the user
+email | string | The user's email
+last-logged-in-at | datetime | The last log in by the user
+guid | string | An identifier for users that can be used across apps
+status | string | `["courses.course_manager.members.studied_via_lti", "courses.course_manager.members.studied", "courses.course_manager.members.invited", "courses.course_manager.members.no_invitation_sent"]` The current study status of the user (priority from left to right)
+
+### Meta
+
+Parameter | type | Description
+--------- | --------- | -----------
+role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` You have permission to edit this specific content<br>`content_manager` You have permission to edit all content<br>`course_manager` You have permission to manage to entire course<br>`admin` You have permission to edit everything
+can-edit | boolean | The user is allowed to edit the current course
+lti | boolean | The user has an LTI account connected
+progress | float | The user's progress on this specific course (`0.0` is unstarted, `1.0` is complete)
+percent-started | float | The percentage of concepts the user has started (`0.0` to `1.0`)
+last-study-time | datetime | The time which the user last studied this course
+payment-required | boolean | The user needs money to enable this course
+cost | integer | Cost in cents for to enable the course
+
 
 # Images
 
