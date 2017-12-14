@@ -3,8 +3,6 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - javascript
 
 toc_footers:
   - <a href='https://cerego.com/'>Check out the Cerego website</a>
@@ -19,19 +17,11 @@ search: true
 
 > To test your connection to our API please use
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/echo 
     -d '{"echo":"Test"}' 
     -X POST 
     -H "Content-Type: application/json"
-```
-
-```javascript
-
 ```
 
 > Please note that all other endpoints require authentication via a Bearer Token.
@@ -82,22 +72,10 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 
 ## Get all courses
 
-```ruby
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-const request = require("request");
-const url = "https://cerego.com/api/v3/courses";
-request.get(url, (error, response, body) => {
-  let json = JSON.parse(body);
-  console.log(json);
-});
 ```
 
 > The above command returns JSON structured like this:
@@ -106,13 +84,13 @@ request.get(url, (error, response, body) => {
 {
   "data": [
     {
-      "id": "13421",
+      "id": "123456",
       "type": "courses",
       "attributes": {
         "created-at": "2016-07-26T04:10:32.000Z",
-        "name": "Introduction to Learning and Behavior : 9781305953079",
+        "name": "Introduction to the Cerego API",
         "description": null,
-        "slug": "introduction-to-learning-and-behavior-9781305953079-6321ba48-6df3-42b2-bf15-3001977b1110",
+        "slug": "introduction-to-the-cerego-api",
         "users-count": 3,
         "admin-users-count": 1,
         "student-users-count": 2,
@@ -122,28 +100,28 @@ request.get(url, (error, response, body) => {
         "state": "published",
         "state-updated-at": null,
         "instructor-names": [
-          "Inst04 Mt"
+          "Mr. Professor"
         ],
         "ic-items-count": 0,
         "assignments-count": 12,
-        "external-id": "367392"
+        "external-id": "654321"
       },
       "relationships": {
         "partner": {
           "data": {
-            "id": "10",
+            "id": "21",
             "type": "partners"
           }
         },
         "image": {
           "data": {
-            "id": "865877",
+            "id": "123456",
             "type": "images"
           }
         }
       },
       "links": {
-        "self": "/v3/courses/introduction-to-learning-and-behavior-9781305953079-6321ba48-6df3-42b2-bf15-3001977b1110"
+        "self": "/v3/courses/introduction-to-the-cerego-api"
       },
       "meta": {
         "settings": null,
@@ -158,13 +136,13 @@ request.get(url, (error, response, body) => {
       }
     },
     {
-      "id": "13422",
+      "id": "123457",
       "type": "courses",
       "attributes": {
         "created-at": "2016-07-26T06:01:10.000Z",
-        "name": "Statistics for the Behavioral Sciences : 9781305647305",
+        "name": "The learning science behind the banana revolution",
         "description": null,
-        "slug": "statistics-for-the-behavioral-sciences-9781305647305-ecce4b8e-433d-4e43-a58b-5eda6b6da2db",
+        "slug": "the-learning-science-behind-the-banana-revolution",
         "users-count": 2,
         "admin-users-count": 1,
         "student-users-count": 1,
@@ -174,16 +152,16 @@ request.get(url, (error, response, body) => {
         "state": "published",
         "state-updated-at": null,
         "instructor-names": [
-          "Stephanie Tobin"
+          "Dr. Knowitall"
         ],
         "ic-items-count": 0,
         "assignments-count": 1,
-        "external-id": "367413"
+        "external-id": "666666"
       },
       "relationships": {
         "partner": {
           "data": {
-            "id": "10",
+            "id": "21",
             "type": "partners"
           }
         },
@@ -192,7 +170,7 @@ request.get(url, (error, response, body) => {
         }
       },
       "links": {
-        "self": "/v3/courses/statistics-for-the-behavioral-sciences-9781305647305-ecce4b8e-433d-4e43-a58b-5eda6b6da2db"
+        "self": "/v3/courses/the-learning-science-behind-the-banana-revolution"
       },
       "meta": {
         "settings": null,
@@ -209,18 +187,18 @@ request.get(url, (error, response, body) => {
   ],
   "included": [
     {
-      "id": "865877",
+      "id": "123456",
       "type": "images",
       "attributes": {
         "created-at": "2016-04-04T22:06:29.000Z",
-        "url": "https://assets.testing.cerego.com/uploads/image/uploader/865877/d59fa10pv0.jpg",
+        "url": "https://assets.testing.cerego.com/uploads/image/uploader/123456/h3ll0m473.jpg",
         "orig-url": null,
         "orig-owner": null,
         "license-id": null,
         "alt-tag": null
       },
       "links": {
-        "self": "/v3/images/865877"
+        "self": "/v3/images/123456"
       }
     }
   ],
@@ -291,18 +269,10 @@ cost | integer | Cost in cents for to enable the course
 
 ## Get a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses/:id
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-
 ```
 
 > The above command returns JSON structured like this:
@@ -310,13 +280,13 @@ curl https://cerego.com/api/v3/courses/:id
 ```json
 {
   "data": {
-    "id": "38410",
+    "id": "123456",
     "type": "courses",
     "attributes": {
       "created-at": "2017-11-27T09:52:52.000Z",
-      "name": "Elsevier Adaptive Learning for Structure and Function of the Body, 14th Edition : 153260_nkane19_1001",
+      "name": "Introduction to the Cerego api",
       "description": null,
-      "slug": "elsevier-adaptive-learning-for-structure-and-function-of-the-body-14th-edition-153260_nkane19_1001",
+      "slug": "introduction-to-the-cerego-api",
       "users-count": 1,
       "admin-users-count": 1,
       "student-users-count": 0,
@@ -326,28 +296,28 @@ curl https://cerego.com/api/v3/courses/:id
       "state": "published",
       "state-updated-at": null,
       "instructor-names": [
-        "Nerea Kane"
+        "Mr. Professor"
       ],
       "ic-items-count": 0,
       "assignments-count": 1,
-      "external-id": "17431949894"
+      "external-id": "12345678"
     },
     "relationships": {
       "partner": {
         "data": {
-          "id": "4",
+          "id": "21",
           "type": "partners"
         }
       },
       "image": {
         "data": {
-          "id": "628253",
+          "id": "123456",
           "type": "images"
         }
       }
     },
     "links": {
-      "self": "/v3/courses/elsevier-adaptive-learning-for-structure-and-function-of-the-body-14th-edition-153260_nkane19_1001"
+      "self": "/v3/courses/introduction-to-the-cerego-api"
     },
     "meta": {
       "settings": null,
@@ -363,18 +333,18 @@ curl https://cerego.com/api/v3/courses/:id
   },
   "included": [
     {
-      "id": "628253",
+      "id": "123456",
       "type": "images",
       "attributes": {
         "created-at": "2014-05-22T13:39:34.000Z",
-        "url": "https://assets.testing.cerego.com/uploads/image/uploader/628253/61dvdt9c6hmi3o.jpg",
+        "url": "https://assets.testing.cerego.com/uploads/image/uploader/628253/h3ll0m473.jpg",
         "orig-url": null,
         "orig-owner": null,
         "license-id": null,
         "alt-tag": null
       },
       "links": {
-        "self": "/v3/images/628253"
+        "self": "/v3/images/123456"
       }
     }
   ]
@@ -389,20 +359,12 @@ This endpoint retrieves a course.
 
 ## Create a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses
-    -d '{"name": "Course Name", "description": "The Description of the Course", "partner_id": 21, "slug": "course-name"}'
+    -d '{"name": "How To Achieve World Domination", "description": "The is pleasant course for those interested in conquering all life all on earth.", "partner_id": 21, "slug": "how-to-achieve-world-domination"}'
     -X POST
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -410,13 +372,13 @@ curl https://cerego.com/api/v3/courses
 ```json
 {
   "data": {
-    "id": "38411",
+    "id": "123458",
     "type": "courses",
     "attributes": {
       "created-at": "2017-12-14T00:25:58.000Z",
-      "name": "Course Name",
-      "description": "The Description of the Course",
-      "slug": "course-name",
+      "name": "How To Achieve World Domination",
+      "description": "The is pleasant course for those interested in conquering all life all on earth.",
+      "slug": "how-to-achieve-world-domination",
       "users-count": 1,
       "admin-users-count": 0,
       "student-users-count": 0,
@@ -426,7 +388,7 @@ curl https://cerego.com/api/v3/courses
       "state": "unpublished",
       "state-updated-at": null,
       "instructor-names": [
-        "Kyle Stewart"
+        "Genghis Khan"
       ],
       "ic-items-count": null,
       "assignments-count": 0,
@@ -444,7 +406,7 @@ curl https://cerego.com/api/v3/courses
       }
     },
     "links": {
-      "self": "/v3/courses/course-name"
+      "self": "/v3/courses/how-to-achieve-world-domination"
     },
     "meta": {
       "settings": {
@@ -486,20 +448,12 @@ slug | string | no | The slug for the course
 
 ## Update a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses/:id
-    -d '{"name": "Updated Name", "description": "Updated Description", "slug": "updated-name", "state": "published"}'
+    -d '{"name": "27 Title You Should not Use In API Documentation", "description": "A comprehensive list of every absurd title you can use for examples in your API documentation.", "slug": "27-titles-you-shouldnt-use-in-api-documentation", "state": "published"}'
     -X PUT
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -507,13 +461,13 @@ curl https://cerego.com/api/v3/courses/:id
 ```json
 {
   "data": {
-    "id": "38414",
+    "id": "123459",
     "type": "courses",
     "attributes": {
       "created-at": "2017-12-14T00:30:26.000Z",
-      "name": "New Name",
-      "description": "Updated Description",
-      "slug": "updated-name",
+      "name": "27 Title You Should not Use In API Documentation",
+      "description": "A comprehensive list of every absurd title you can use for examples in your API documentation.",
+      "slug": "27-titles-you-shouldnt-use-in-api-documentation",
       "users-count": 1,
       "admin-users-count": 1,
       "student-users-count": 0,
@@ -523,7 +477,7 @@ curl https://cerego.com/api/v3/courses/:id
       "state": "published",
       "state-updated-at": null,
       "instructor-names": [
-        "Kyle Stewart"
+        "Ninja Wizard Developer"
       ],
       "ic-items-count": null,
       "assignments-count": 0,
@@ -541,7 +495,7 @@ curl https://cerego.com/api/v3/courses/:id
       }
     },
     "links": {
-      "self": "/v3/courses/updated-name"
+      "self": "/v3/courses/27-titles-you-shouldnt-use-in-api-documentation"
     },
     "meta": {
       "settings": {
@@ -583,19 +537,11 @@ slug | string | The slug for the course
 
 ## Delete a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses/:id
     -X DELETE
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content
@@ -612,18 +558,10 @@ This endpoint deletes a course
 
 ## Get all users in a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses/:id/users
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-
 ```
 
 > The above command returns JSON structured like this:
@@ -636,9 +574,9 @@ curl https://cerego.com/api/v3/courses/:id/users
       "type": "users",
       "attributes": {
         "created-at": "2014-05-25T03:06:08.000Z",
-        "name": "Kyle Stewart",
-        "username": "kyle",
-        "email": "kwstewar@gmail.com",
+        "name": "Abraham Lincoln",
+        "username": "bowtoabe",
+        "email": "bow.to.abe@example.com",
         "last-logged-in-at": "2017-12-14T18:55:14.000Z",
         "guid": "bff7431b-b099-4995-8b63-3b10a20223ab",
         "status": "courses.course_manager.members.studied_via_lti"
@@ -710,10 +648,6 @@ cost | integer | Cost in cents for to enable the course
 
 ## Add a user to a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses/:id/users
     -d '{"email": "zaguios@gmail.com", "name": "Christopher Gregorio"}'
@@ -722,22 +656,18 @@ curl https://cerego.com/api/v3/courses/:id/users
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
 ```
 
-```javascript
-
-```
-
 > If you successfully make your POST request you should receive a response that looks like this:
 
 ```json
 {
   "data": {
-    "id": "1849768",
+    "id": "123460",
     "type": "users",
     "attributes": {
       "created-at": "2017-12-14T19:24:24.000Z",
-      "name": "Christopher Gregorio",
-      "username": "50a9eb30c332013510ef186590d64769",
-      "email": "zaguios@gmail.com",
+      "name": "Julius Caesar",
+      "username": "allhailtheromanempire@example.com",
+      "email": "all.hail.the.roman.empire@example.com",
       "last-logged-in-at": null,
       "guid": "55d22545-92f2-40eb-9037-f9770c3516a9",
       "status": "courses.course_manager.members.invited"
@@ -786,18 +716,10 @@ name | string | no | The name of the user you wish to add
 
 ## Get a user in a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses/:id/users/:id
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-
 ```
 
 > If you successfully make your GET request you should receive a response that looks like this:
@@ -809,9 +731,9 @@ curl https://cerego.com/api/v3/courses/:id/users/:id
     "type": "users",
     "attributes": {
       "created-at": "2017-12-14T19:24:24.000Z",
-      "name": "Christopher Gregorio",
-      "username": "50a9eb30c332013510ef186590d64769",
-      "email": "zaguios@gmail.com",
+      "name": "Marie Antionette",
+      "username": "cakeeaters",
+      "email": "cake.eaters@example.com",
       "last-logged-in-at": "2017-12-14T20:33:31.000Z",
       "guid": "55d22545-92f2-40eb-9037-f9770c3516a9",
       "status": "courses.course_manager.members.invited"
@@ -848,19 +770,11 @@ This endpoint gets information about a user within a course
 
 ## Remove a user from a course
 
-```ruby
-
-```
-
 ```shell
 curl https://cerego.com/api/v3/courses/:id/users/:id
     -X DELETE
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
-```
-
-```javascript
-
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content
@@ -877,33 +791,27 @@ This endpoint deletes a user from a course
 
 ## Get an image
 
-```ruby
-```
-
 ```shell
 curl https://cerego.com/api/v3/images/:id
     -H "Content-Type: application/json"
     -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
 ```
 
-```javascript
-```
-
 ```json
 {
   "data": {
-    "id": "662672",
+    "id": "123456",
     "type": "images",
     "attributes": {
       "created-at": "2014-08-19T17:17:24.000Z",
-      "url": "https://assets.testing.cerego.com/uploads/image/uploader/662672/61evfr7fsl2aco.jpg",
+      "url": "https://assets.testing.cerego.com/uploads/image/uploader/662672/h3ll0m473.jpg",
       "orig-url": null,
       "orig-owner": null,
       "license-id": null,
       "alt-tag": null
     },
     "links": {
-      "self": "/v3/images/662672"
+      "self": "/v3/images/123456"
     }
   }
 }
