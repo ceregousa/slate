@@ -800,7 +800,7 @@ curl https://cerego.com/api/v3/courses/:id/users/:id
 
 ```
 
-> If you successfully make your POST request you should receive a response that looks like this:
+> If you successfully make your GET request you should receive a response that looks like this:
 
 ```json
 {
@@ -845,6 +845,33 @@ This endpoint gets information about a user within a course
 ### HTTP Request
 
 `GET https://cerego.com/api/v3/courses/:id/users/:id`
+
+## Remove a user from a course
+
+```ruby
+
+```
+
+```shell
+curl https://cerego.com/api/v3/courses/:id/users/:id
+    -X DELETE
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+```
+
+```javascript
+
+```
+
+> If you successfully make your DELETE request you should receive a 204 No Content
+
+This endpoint deletes a user from a course
+
+### HTTP Request
+
+`DELETE https://cerego.com/api/v3/courses/:id/users/:id`
+
+<aside class="notice">Removing a user does NOT clear their memories or progress.</aside>
 
 # Images
 
