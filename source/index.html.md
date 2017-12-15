@@ -46,19 +46,11 @@ All 3 environments support our full range of APIs and will require all requests 
 
 Cerego utilizes the concept of bearer tokens to authenticate API calls. 
 
-To easily acquire your bearer token please log into your [Cerego](https://cerego.com/) account (that has permission for the calls you wish to make) and then right click and press inspect. Please then click the tab that says console and then type in 
+To easily acquire your bearer token please log into your [Cerego](https://cerego.com/) account (that has permission for the calls you wish to make) and then [click here.](https://cerego.com/configuration)
 
-`Smartfm.API.token` 
+On the configuration page you will be able to get your Bearer token that you will need to use for API calls.
 
-![Acquire Token](/images/acquireToken.png)
-
-You should see a string similar to 
-
-`cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U` 
-
-This is your Bearer token that you will need to use for API calls.
-
-Cerego expects for Bearer token to be included in all API requests to the server in a header that looks like the following:
+Cerego expects for Bearer token to be included in all API requests to the server in a header. The header should look like:
 
 `Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U`
 
