@@ -30,17 +30,11 @@ Welcome to the Cerego API! You can use our API to access Cerego endpoints, which
 
 All V3 endpoints follow the [JSON API](http://jsonapi.org/) standard. Please take note how objects within a certain resource are in the includes section and -'s are used to denote spaces.
 
-Cerego provides 3 different environments, 2 for testing and QA, as well as our primary production environment
+All V3 endpoints will start with the following URL and follow standard RESTful practices.
 
-`https://cerego.com/` - Production <br>
-`https://stable.cerego.com/` - Stable (Used for QA) <br>
-`https://testing.cerego.com/` - Testing (Used for heavy testing and unreleased features)
+`https://cerego.com/api/v3/`
 
-All 3 environments support our full range of APIs and will require all requests to be made over SSL. It is recommend to use JSON for all requests.
-
-<aside class="notice">Testing and Stable use an anonymized version of the production database that is synced once per week.</aside>
-
-<aside class="warning">Any changes made on Stable or Testing will be cleared away weekly on saturday.</aside>
+All requests should be made over SSL and it is recommend to use JSON as well.
 
 # Authentication
 
@@ -183,7 +177,7 @@ curl https://cerego.com/api/v3/courses
       "type": "images",
       "attributes": {
         "created-at": "2016-04-04T22:06:29.000Z",
-        "url": "https://assets.testing.cerego.com/uploads/image/uploader/123456/h3ll0m473.jpg",
+        "url": "https://assets.cerego.com/uploads/image/uploader/123456/h3ll0m473.jpg",
         "orig-url": null,
         "orig-owner": null,
         "license-id": null,
@@ -329,7 +323,7 @@ curl https://cerego.com/api/v3/courses/:id
       "type": "images",
       "attributes": {
         "created-at": "2014-05-22T13:39:34.000Z",
-        "url": "https://assets.testing.cerego.com/uploads/image/uploader/628253/h3ll0m473.jpg",
+        "url": "https://assets.cerego.com/uploads/image/uploader/628253/h3ll0m473.jpg",
         "orig-url": null,
         "orig-owner": null,
         "license-id": null,
@@ -796,7 +790,7 @@ curl https://cerego.com/api/v3/images/:id
     "type": "images",
     "attributes": {
       "created-at": "2014-08-19T17:17:24.000Z",
-      "url": "https://assets.testing.cerego.com/uploads/image/uploader/662672/h3ll0m473.jpg",
+      "url": "https://assets.cerego.com/uploads/image/uploader/662672/h3ll0m473.jpg",
       "orig-url": null,
       "orig-owner": null,
       "license-id": null,
