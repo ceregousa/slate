@@ -26,7 +26,7 @@ curl https://cerego.com/api/echo
 
 > Please note that all other endpoints require authentication via a Bearer Token.
 
-Welcome to the Cerego API! You can use our API to access Cerego endpoints, which can get information on about courses, assignments, users, and more.
+Welcome to the Cerego API! You can use our API to access Cerego endpoints, which you can use to get information on courses, assignments, users, and more.
 
 All V3 endpoints follow the [JSON API](http://jsonapi.org/) standard. Please take note how objects within a certain resource are in the includes section and -'s are used to denote spaces.
 
