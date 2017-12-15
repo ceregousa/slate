@@ -294,37 +294,23 @@
 <p>Please note that all other endpoints require authentication via a Bearer Token.</p>
 </blockquote>
 
-<p>Welcome to the Cerego API! You can use our API to access Cerego endpoints, which can get information on about courses, assignments, users, and more.</p>
+<p>Welcome to the Cerego API! You can use our API to access Cerego endpoints, which you can use to get information on courses, assignments, users, and more.</p>
 
 <p>All V3 endpoints follow the <a href="http://jsonapi.org/">JSON API</a> standard. Please take note how objects within a certain resource are in the includes section and -&#39;s are used to denote spaces.</p>
 
-<p>Cerego provides 3 different environments, 2 for testing and QA, as well as our primary production environment</p>
+<p>All V3 endpoints will start with the following URL and follow standard RESTful practices.</p>
 
-<p><code>https://cerego.com/</code> - Production <br>
-<code>https://stable.cerego.com/</code> - Stable (Used for QA) <br>
-<code>https://testing.cerego.com/</code> - Testing (Used for heavy testing and unreleased features)</p>
+<p><code>https://cerego.com/api/v3/</code></p>
 
-<p>All 3 environments support our full range of APIs and will require all requests to be made over SSL. It is recommend to use JSON for all requests.</p>
-
-<aside class="notice">Testing and Stable use an anonymized version of the production database that is synced once per week.</aside>
-
-<aside class="warning">Any changes made on Stable or Testing will be cleared away weekly on saturday.</aside>
+<p>All requests should be made over SSL and it is recommend to use JSON as well.</p>
 <h1 id='authentication'>Authentication</h1>
 <p>Cerego utilizes the concept of bearer tokens to authenticate API calls. </p>
 
-<p>To easily acquire your bearer token please log into your <a href="https://cerego.com/">Cerego</a> account (that has permission for the calls you wish to make) and then right click and press inspect. Please then click the tab that says console and then type in </p>
+<p>To easily acquire your bearer token please log into your <a href="https://cerego.com/">Cerego</a> account (that has permission for the calls you wish to make) and then <a href="https://cerego.com/configuration">click here.</a></p>
 
-<p><code>Smartfm.API.token</code> </p>
+<p>On the configuration page you will be able to get your Bearer token that you will need to use for API calls.</p>
 
-<p><img src="images/acquireToken.png" alt="Acquire Token" /></p>
-
-<p>You should see a string similar to </p>
-
-<p><code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U</code> </p>
-
-<p>This is your Bearer token that you will need to use for API calls.</p>
-
-<p>Cerego expects for Bearer token to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Cerego expects for Bearer token to be included in all API requests to the server in a header. The header should look like:</p>
 
 <p><code>Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U</code></p>
 
@@ -335,7 +321,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <aside class="warning">Cerego does NOT currently use OAuth2. It is not possible to perform API calls on an individual user level.</aside>
 <h1 id='courses'>Courses</h1><h2 id='get-all-courses'>Get all courses</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -450,7 +436,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04T22:06:29.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/123456/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.cerego.com/uploads/image/uploader/123456/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -514,7 +500,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <h3 id='course-object'>Course Object</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
 <th>type</th>
 <th>Description</th>
 </tr>
@@ -542,32 +528,32 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>users-count</td>
 <td>integer</td>
-<td>The amount of users in the course</td>
+<td>The number of users in the course</td>
 </tr>
 <tr>
 <td>admin-users-count</td>
 <td>integer</td>
-<td>The amount of admins (instructors) in the course</td>
+<td>The number of admins (instructors) in the course</td>
 </tr>
 <tr>
 <td>student-users-count</td>
 <td>integer</td>
-<td>The amount of students in the course</td>
+<td>The number of students in the course</td>
 </tr>
 <tr>
 <td>goal-list-count</td>
 <td>integer</td>
-<td>The amount of series in the course</td>
+<td>The number of series in the course</td>
 </tr>
 <tr>
 <td>goals-count</td>
 <td>integer</td>
-<td>The amount of sets in the course</td>
+<td>The number of sets in the course</td>
 </tr>
 <tr>
 <td>reports-count</td>
 <td>integer</td>
-<td>The amount of reports a set has</td>
+<td>The number of reports a set has</td>
 </tr>
 <tr>
 <td>state</td>
@@ -587,12 +573,12 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>ic-items-count</td>
 <td>integer</td>
-<td>The amount of instructional items in the course</td>
+<td>The number of instructional items in the course</td>
 </tr>
 <tr>
 <td>assignments-count</td>
 <td>integer</td>
-<td>The amount of sets and series in course</td>
+<td>The number of sets and series in course</td>
 </tr>
 <tr>
 <td>external-id</td>
@@ -603,7 +589,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <h3 id='meta'>Meta</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
 <th>type</th>
 <th>Description</th>
 </tr>
@@ -651,7 +637,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </tbody></table>
 <h2 id='get-a-course'>Get a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -715,7 +701,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-05-22T13:39:34.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/628253/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.cerego.com/uploads/image/uploader/628253/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -735,7 +721,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
     -d <span class="s1">'{"name": "How To Achieve World Domination", "description": "The is pleasant course for those interested in conquering all life all on earth.", "partner_id": 21, "slug": "how-to-achieve-world-domination"}'</span>
     -X POST
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>If you successfully make your POST request you should receive a response that looks like this:</p>
@@ -841,7 +827,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
     -d <span class="s1">'{"name": "27 Title You Should not Use In API Documentation", "description": "A comprehensive list of every absurd title you can use for examples in your API documentation.", "slug": "27-titles-you-shouldnt-use-in-api-documentation", "state": "published"}'</span>
     -X PUT
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>If you successfully make your POST request you should receive a response that looks like this:</p>
@@ -941,7 +927,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <h2 id='delete-a-course'>Delete a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id
     -X DELETE
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>If you successfully make your DELETE request you should receive a 204 No Content</p>
@@ -954,7 +940,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <aside class="warning">A course must be <code>unpublished</code> or <code>archived</code> to be deleted.</aside>
 <h1 id='users'>Users</h1><h2 id='get-all-users-in-a-course'>Get all users in a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1011,7 +997,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <h3 id='user-object'>User Object</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
 <th>type</th>
 <th>Description</th>
 </tr>
@@ -1055,7 +1041,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <h3 id='meta-2'>Meta</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
 <th>type</th>
 <th>Description</th>
 </tr>
@@ -1105,7 +1091,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
     -d <span class="s1">'{"email": "zaguios@gmail.com", "name": "Christopher Gregorio"}'</span>
     -X POST
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>If you successfully make your POST request you should receive a response that looks like this:</p>
@@ -1177,7 +1163,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <aside class="warning">This endpoint is idempotent. (A user will not be added again if they are already in the course)</aside>
 <h2 id='get-a-user-in-a-course'>Get a user in a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users/:id
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>If you successfully make your GET request you should receive a response that looks like this:</p>
@@ -1224,7 +1210,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <h2 id='remove-a-user-from-a-course'>Remove a user from a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users/:id
     -X DELETE
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>If you successfully make your DELETE request you should receive a 204 No Content</p>
@@ -1237,14 +1223,14 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <aside class="notice">Removing a user does NOT clear their memories or progress.</aside>
 <h1 id='images'>Images</h1><h2 id='get-an-image'>Get an image</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/images/:id
     -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.testing.cerego.com/uploads/image/uploader/662672/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.cerego.com/uploads/image/uploader/662672/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1262,7 +1248,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <h3 id='image-object'>Image Object</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
