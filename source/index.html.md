@@ -44,7 +44,7 @@ To easily acquire your bearer token please log into your [Cerego](https://cerego
 
 On the configuration page you will be able to get your Bearer token that you will need to use for API calls.
 
-Cerego expects for Bearer token to be included in all API requests to the server in a header. The header should look like:
+Cerego expects the Bearer token to be included in all API requests to the server in a header. The header should look like:
 
 `Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U`
 
