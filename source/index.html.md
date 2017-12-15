@@ -75,7 +75,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 ```shell
 curl https://cerego.com/api/v3/courses
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > The above command returns JSON structured like this:
@@ -235,28 +235,28 @@ sort | Orders the results based on the param. <br>Example: `name` - sort in alph
 
 ### Course Object
 
-Parameter | type | Description
+Attribute | type | Description
 --------- | --------- | -----------
 created_at | datetime | When the course was created
 name | string | The name of the course
 description | string | The description of the course
 slug | string | Unique name for the course
-users-count | integer | The amount of users in the course
-admin-users-count | integer | The amount of admins (instructors) in the course
-student-users-count | integer | The amount of students in the course
-goal-list-count | integer | The amount of series in the course
-goals-count | integer | The amount of sets in the course
-reports-count | integer | The amount of reports a set has
+users-count | integer | The number of users in the course
+admin-users-count | integer | The number of admins (instructors) in the course
+student-users-count | integer | The number of students in the course
+goal-list-count | integer | The number of series in the course
+goals-count | integer | The number of sets in the course
+reports-count | integer | The number of reports a set has
 state | string | `published` Course is viewable <br> `unpublished` Course is hidden <br> `archived` Course is no longer in use
 state-updated-at | datetime | Time of last time state was changed
 instructor-names | array[string] | A list of instructor names for the course
-ic-items-count | integer | The amount of instructional items in the course
-assignments-count | integer | The amount of sets and series in course
+ic-items-count | integer | The number of instructional items in the course
+assignments-count | integer | The number of sets and series in course
 external-id | integer | The LTI user associated with the course?
 
 ### Meta
 
-Parameter | type | Description
+Attribute | type | Description
 --------- | --------- | -----------
 settings | object | `daily-new-assignments` boolean - Will receive notifications when new assignments become published<br>`signup-nudges` boolean - Will receive steps and advice on getting you set up<br>`daily-new-students` boolean - Will receive notifications about new students joining your courses<br>`daily-goals-reached` boolean - Will receive notifications when students reach an assigned goal<br>`weekly-stale-invitations` boolean - Will receive weekly summary of students who haven't confirmed their invitation
 role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` You have permission to edit this specific content<br>`content_manager` You have permission to edit all content<br>`course_manager` You have permission to manage to entire course<br>`admin` You have permission to edit everything
@@ -272,7 +272,7 @@ cost | integer | Cost in cents for to enable the course
 ```shell
 curl https://cerego.com/api/v3/courses/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > The above command returns JSON structured like this:
@@ -364,7 +364,7 @@ curl https://cerego.com/api/v3/courses
     -d '{"name": "How To Achieve World Domination", "description": "The is pleasant course for those interested in conquering all life all on earth.", "partner_id": 21, "slug": "how-to-achieve-world-domination"}'
     -X POST
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -453,7 +453,7 @@ curl https://cerego.com/api/v3/courses/:id
     -d '{"name": "27 Title You Should not Use In API Documentation", "description": "A comprehensive list of every absurd title you can use for examples in your API documentation.", "slug": "27-titles-you-shouldnt-use-in-api-documentation", "state": "published"}'
     -X PUT
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -541,7 +541,7 @@ slug | string | The slug for the course
 curl https://cerego.com/api/v3/courses/:id
     -X DELETE
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content
@@ -561,7 +561,7 @@ This endpoint deletes a course
 ```shell
 curl https://cerego.com/api/v3/courses/:id/users
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > The above command returns JSON structured like this:
@@ -622,7 +622,7 @@ This endpoint retrieves all users that are connected to a specific course.
 
 ### User Object
 
-Parameter | type | Description
+Attribute | type | Description
 --------- | --------- | -----------
 created_at | datetime | When the course was created
 name | string | The name of the user
@@ -634,7 +634,7 @@ status | string | `courses.course_manager.members.studied_via_lti` Student is co
 
 ### Meta
 
-Parameter | type | Description
+Attribute | type | Description
 --------- | --------- | -----------
 role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` You have permission to edit this specific content<br>`content_manager` You have permission to edit all content<br>`course_manager` You have permission to manage to entire course<br>`admin` You have permission to edit everything
 can-edit | boolean | The user is allowed to edit the current course
@@ -653,7 +653,7 @@ curl https://cerego.com/api/v3/courses/:id/users
     -d '{"email": "zaguios@gmail.com", "name": "Christopher Gregorio"}'
     -X POST
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -719,7 +719,7 @@ name | string | no | The name of the user you wish to add
 ```shell
 curl https://cerego.com/api/v3/courses/:id/users/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > If you successfully make your GET request you should receive a response that looks like this:
@@ -774,7 +774,7 @@ This endpoint gets information about a user within a course
 curl https://cerego.com/api/v3/courses/:id/users/:id
     -X DELETE
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content
@@ -794,7 +794,7 @@ This endpoint deletes a user from a course
 ```shell
 curl https://cerego.com/api/v3/images/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U"
+    -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
 ```json
@@ -825,7 +825,7 @@ This endpoint retrieves an image.
 
 ### Image Object
 
-Parameter | Type | Description
+Attribute | Type | Description
 --------- | ------- | -----------
 created_at | datetime | The time which the image was created
 url | string | The url for the image
