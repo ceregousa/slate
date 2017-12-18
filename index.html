@@ -276,6 +276,7 @@
       </div>
         <ul class="toc-footer">
             <li><a href='https://cerego.com/'>Check out the Cerego website</a></li>
+            <li><a href='https://cerego.com/configuration'>Get your Bearer token.</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -302,11 +303,11 @@
 
 <p><code>https://cerego.com/api/v3/</code></p>
 
-<p>All requests should be made over SSL and it is recommend to use JSON as well.</p>
+<p>All requests should be made over SSL and it is recommend to use JSON to format your requests.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>Cerego utilizes the concept of bearer tokens to authenticate API calls. </p>
+<p>Cerego utilizes Bearer tokens to authenticate API calls. </p>
 
-<p>To easily acquire your bearer token please log into your <a href="https://cerego.com/">Cerego</a> account (that has permission for the calls you wish to make) and then <a href="https://cerego.com/configuration">click here.</a></p>
+<p>To easily acquire your Bearer token please log into your <a href="https://cerego.com/">Cerego</a> account (that has permission for the calls you wish to make) and then <a href="https://cerego.com/configuration">click here.</a></p>
 
 <p>On the configuration page you will be able to get your Bearer token that you will need to use for API calls.</p>
 
@@ -318,7 +319,7 @@
 You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U</code> with your personal Bearer token.
 </aside>
 
-<aside class="warning">Cerego does NOT currently use OAuth2. It is not possible to perform API calls on an individual user level.</aside>
+<aside class="warning">Please be aware that Cerego does NOT currently use OAuth2. It is not possible to perform API calls on an individual user level.</aside>
 <h1 id='courses'>Courses</h1><h2 id='get-all-courses'>Get all courses</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
@@ -474,7 +475,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </tr>
 <tr>
 <td>filter[role]</td>
-<td><code>student</code> will display all courses that the user id is learning <br> <code>instructor</code> will diplay all courses the user id is teaching</td>
+<td><code>student</code> will display all courses that the user is learning <br> <code>instructor</code> will display all courses the user is teaching</td>
 </tr>
 <tr>
 <td>filter[state]</td>
@@ -563,7 +564,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>state-updated-at</td>
 <td>datetime</td>
-<td>Time of last time state was changed</td>
+<td>The most recent time that state was changed</td>
 </tr>
 <tr>
 <td>instructor-names</td>
@@ -583,7 +584,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>external-id</td>
 <td>integer</td>
-<td>The LTI user associated with the course?</td>
+<td>The LTI user associated with the course</td>
 </tr>
 </tbody></table>
 <h3 id='meta'>Meta</h3>
@@ -627,12 +628,12 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>payment-required</td>
 <td>boolean</td>
-<td>You owe money to enable this course</td>
+<td>You need to pay money to enable this course</td>
 </tr>
 <tr>
 <td>cost</td>
 <td>integer</td>
-<td>Cost in cents for to enable the course</td>
+<td>Cost in cents to enable the course</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-course'>Get a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id
@@ -1025,7 +1026,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>last-logged-in-at</td>
 <td>datetime</td>
-<td>The last log in by the user</td>
+<td>Time of last log in by the user</td>
 </tr>
 <tr>
 <td>guid</td>
@@ -1084,7 +1085,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>cost</td>
 <td>integer</td>
-<td>Cost in cents for to enable the course</td>
+<td>Cost in cents to enable this course</td>
 </tr>
 </tbody></table>
 <h2 id='add-a-user-to-a-course'>Add a user to a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users
@@ -1299,11 +1300,11 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized -- Your Bearer token is wrong.</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The resource you requested is hidden for administrators only.</td>
+<td>Forbidden -- The resource you requested is available for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
