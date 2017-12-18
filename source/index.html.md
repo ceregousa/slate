@@ -6,6 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://cerego.com/'>Check out the Cerego website</a>
+  - <a href='https://cerego.com/configuration'>Get your Bearer token.</a>
 
 includes:
   - errors
@@ -34,13 +35,13 @@ All V3 endpoints will start with the following URL and follow standard RESTful p
 
 `https://cerego.com/api/v3/`
 
-All requests should be made over SSL and it is recommend to use JSON as well.
+All requests should be made over SSL and it is recommend to use JSON to format your requests.
 
 # Authentication
 
-Cerego utilizes the concept of bearer tokens to authenticate API calls. 
+Cerego utilizes Bearer tokens to authenticate API calls. 
 
-To easily acquire your bearer token please log into your [Cerego](https://cerego.com/) account (that has permission for the calls you wish to make) and then [click here.](https://cerego.com/configuration)
+To easily acquire your Bearer token please log into your [Cerego](https://cerego.com/) account (that has permission for the calls you wish to make) and then [click here.](https://cerego.com/configuration)
 
 On the configuration page you will be able to get your Bearer token that you will need to use for API calls.
 
@@ -52,7 +53,7 @@ Cerego expects the Bearer token to be included in all API requests to the server
 You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U</code> with your personal Bearer token.
 </aside>
 
-<aside class="warning">Cerego does NOT currently use OAuth2. It is not possible to perform API calls on an individual user level.</aside>
+<aside class="warning">Please be aware that Cerego does NOT currently use OAuth2. It is not possible to perform API calls on an individual user level.</aside>
 
 # Courses
 
@@ -211,7 +212,7 @@ This endpoint retrieves all courses.
 Parameter | Description
 --------- | -----------
 filter[partner_id] | Scopes the courses returned to the partner specified.
-filter[role] | `student` will display all courses that the user id is learning <br> `instructor` will diplay all courses the user id is teaching
+filter[role] | `student` will display all courses that the user is learning <br> `instructor` will display all courses the user is teaching
 filter[state] | `published` will display all courses that are in a published state <br> `unpublished` will display all courses that have not yet been published <br> `archived` will display all courses that have been archived
 page[number] | Courses are paginated, use this to choose which page you want
 page[size] | The default is `15` - How many courses are listed in each request/page
@@ -234,11 +235,11 @@ goal-list-count | integer | The number of series in the course
 goals-count | integer | The number of sets in the course
 reports-count | integer | The number of reports a set has
 state | string | `published` Course is viewable <br> `unpublished` Course is hidden <br> `archived` Course is no longer in use
-state-updated-at | datetime | Time of last time state was changed
+state-updated-at | datetime | The most recent time that state was changed
 instructor-names | array[string] | A list of instructor names for the course
 ic-items-count | integer | The number of instructional items in the course
 assignments-count | integer | The number of sets and series in course
-external-id | integer | The LTI user associated with the course?
+external-id | integer | The LTI user associated with the course
 
 ### Meta
 
@@ -250,8 +251,8 @@ can-edit | boolean | Determines if you are allowed to edit this content
 progress | float | Your progress on this specific course (`0.0` is unstarted, `1.0` is complete)
 percent-started | float | The percentage of concepts you have started (`0.0` to `1.0`)
 last-study-time | datetime | The time which you last studied this course
-payment-required | boolean | You owe money to enable this course
-cost | integer | Cost in cents for to enable the course
+payment-required | boolean | You need to pay money to enable this course
+cost | integer | Cost in cents to enable the course
 
 ## Get a course
 
@@ -614,7 +615,7 @@ created_at | datetime | When the course was created
 name | string | The name of the user
 username | string | The username of the user
 email | string | The email of the user
-last-logged-in-at | datetime | The last log in by the user
+last-logged-in-at | datetime | Time of last log in by the user
 guid | string | An identifier for users that can be used across apps
 status | string | `courses.course_manager.members.studied_via_lti` Student is connected to the course via LTI<br>`courses.course_manager.members.studied` Student has studied the course, but is not an LTI user<br>`courses.course_manager.members.invited` Student has received an invitation to join the course, but has not yet studied<br>`courses.course_manager.members.no_invitation_sent` No invitation has been sent to the user yet
 
@@ -629,7 +630,7 @@ progress | float | The user's progress on this specific course (`0.0` is unstart
 percent-started | float | The percentage of concepts the user has started (`0.0` to `1.0`)
 last-study-time | datetime | The time which the user last studied this course
 payment-required | boolean | The user needs money to enable this course
-cost | integer | Cost in cents for to enable the course
+cost | integer | Cost in cents to enable this course
 
 
 ## Add a user to a course
