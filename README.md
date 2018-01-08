@@ -52,6 +52,7 @@ You're going to need:
 ```shell
 # either run this to run locally
 bundle install
+brew install node --without-icu4c
 bundle exec middleman server
 
 # OR run this to run with vagrant
