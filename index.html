@@ -202,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;json&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,6 +213,7 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="json">json</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -271,6 +272,14 @@
               </ul>
           </li>
           <li>
+            <a href="#sounds" class="toc-h1 toc-link" data-title="Sounds">Sounds</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-sound" class="toc-h2 toc-link" data-title="Get a sound">Get a sound</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </div>
@@ -290,14 +299,23 @@
     -d <span class="s1">'{"echo":"Test"}'</span> 
     -X POST 
     -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"echo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>Please note that all other endpoints require authentication via a Bearer Token.</p>
 </blockquote>
 
 <p>Welcome to the Cerego API! You can use our API to access Cerego endpoints, which you can use to get information on courses, assignments, users, and more.</p>
 
-<p>All V3 endpoints follow the <a href="http://jsonapi.org/">JSON API</a> standard. Please take note how objects within a certain resource are in the includes section and -&#39;s are used to denote spaces.</p>
+<p>All V3 endpoints follow the <a href="http://jsonapi.org/">JSON API</a> standard. Please take note how objects within a certain resource are in the includes section and parameters are dasherized.</p>
 
 <p>All V3 endpoints will start with the following URL and follow standard RESTful practices.</p>
 
@@ -993,7 +1011,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all users that are connected to a specific course.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://cerego.com/api/v3/courses/:id/users</code></p>
 <h3 id='user-object'>User Object</h3>
 <table><thead>
@@ -1039,7 +1057,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td><code>courses.course_manager.members.studied_via_lti</code> Student is connected to the course via LTI<br><code>courses.course_manager.members.studied</code> Student has studied the course, but is not an LTI user<br><code>courses.course_manager.members.invited</code> Student has received an invitation to join the course, but has not yet studied<br><code>courses.course_manager.members.no_invitation_sent</code> No invitation has been sent to the user yet</td>
 </tr>
 </tbody></table>
-<h3 id='meta-2'>Meta</h3>
+<h3 id='meta'>Meta</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1134,9 +1152,9 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint adds a user to a course (or creates a new user if one does not exist)</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://cerego.com/api/v3/courses/:id/users</code></p>
-<h3 id='request-parameters-3'>Request Parameters</h3>
+<h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1206,7 +1224,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint gets information about a user within a course</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://cerego.com/api/v3/courses/:id/users/:id</code></p>
 <h2 id='remove-a-user-from-a-course'>Remove a user from a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users/:id
     -X DELETE
@@ -1218,7 +1236,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </blockquote>
 
 <p>This endpoint deletes a user from a course</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE https://cerego.com/api/v3/courses/:id/users/:id</code></p>
 
 <aside class="notice">Removing a user does NOT clear their memories or progress.</aside>
@@ -1244,7 +1262,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves an image.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://cerego.com/api/v3/images/:id</code></p>
 <h3 id='image-object'>Image Object</h3>
 <table><thead>
@@ -1285,6 +1303,45 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>The alt message when you hover over the image</td>
 </tr>
 </tbody></table>
+<h1 id='sounds'>Sounds</h1><h2 id='get-a-sound'>Get a sound</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/sounds/:id
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sounds"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.cerego.com/uploads/sound/uploader/662672/h3ll0m473.mp3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/sounds/123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves an sound.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/sounds/:id</code></p>
+<h3 id='sound-object'>Sound Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The time which the sound was created</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>The url for the sound</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>Cerego uses the following error codes:</p>
 
@@ -1304,7 +1361,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The resource you requested is available for administrators only.</td>
+<td>Forbidden -- The resource you requested is not available given your permissions.</td>
 </tr>
 <tr>
 <td>404</td>
@@ -1324,7 +1381,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error -- We had a problem with our server. If the problem persists, please email us at <a href="mailto:support@cerego.com">support@cerego.com</a>.</td>
 </tr>
 <tr>
 <td>503</td>
@@ -1336,6 +1393,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="json">json</a>
           </div>
       </div>
     </div>
