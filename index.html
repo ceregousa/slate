@@ -202,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;json&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,7 +213,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="json">json</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -269,6 +268,9 @@
                   <li>
                     <a href="#get-an-image" class="toc-h2 toc-link" data-title="Get an image">Get an image</a>
                   </li>
+                  <li>
+                    <a href="#upload-an-image" class="toc-h2 toc-link" data-title="Upload an image">Upload an image</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -276,6 +278,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-a-sound" class="toc-h2 toc-link" data-title="Get a sound">Get a sound</a>
+                  </li>
+                  <li>
+                    <a href="#upload-a-sound" class="toc-h2 toc-link" data-title="Upload a sound">Upload a sound</a>
                   </li>
               </ul>
           </li>
@@ -1303,6 +1308,83 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>The alt message when you hover over the image</td>
 </tr>
 </tbody></table>
+<h2 id='upload-an-image'>Upload an image</h2>
+<p>Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded data.</p>
+<h3 id='via-url-using-a-miltipart-form'>Via URL (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  --data-binary <span class="s1">$'------WebKitFormBoundaryMVLbHo8cqv4TIsAb</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="url"</span><span class="se">\r\n\r\n</span><span class="s1">https://www.example.com/file.png</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryMVLbHo8cqv4TIsAb--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-url-using-json'>Via URL (using JSON)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: application/json'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"url":"https://www.example.com/file.png"}'</span>
+</code></pre><h3 id='via-file-using-a-miltipart-form'>Via File (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span>
+   -H <span class="s1">'Authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+   -H <span class="s1">'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'</span>
+   -H <span class="s1">'accept: application/json'</span> 
+   --data-binary <span class="s1">$'------WebKitFormBoundaryru7KOTWamg3KC9gw</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="file"; filename="file.JPG"</span><span class="se">\r\n</span><span class="s1">Content-Type: image/jpeg</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryru7KOTWamg3KC9gw--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-base64-data-parameter'>Via base64 data parameter</h3>
+<blockquote>
+<p>Please note that for base64 uploads the <code>Content-Type</code> header must be set to the content type of the image and not to <code>application/json</code> </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: image/jpeg'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"data":"&lt;base64 encoded image&gt;"}'</span>
+</code></pre><h3 id='sample-response'>Sample Response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"images"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="s2">"2018-01-08T23:46:55.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://prod.assets.cerego.com/uploads/image/uploader/123/file.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"license-id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="s2">"/v3/images/123"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='list-of-supported-content-types'>List of supported Content-Types</h3>
+<ul>
+<li><code>image/gif</code></li>
+<li><code>image/jpg</code></li>
+<li><code>image/jpeg</code></li>
+<li><code>image/pjpeg</code></li>
+<li><code>image/png</code></li>
+<li><code>image/svg+xml</code></li>
+<li><code>image/tiff</code></li>
+<li><code>image/x-icon</code></li>
+<li><code>image/bmp</code></li>
+<li><code>image/x-bmp</code></li>
+<li><code>image/x-ms-bmp</code></li>
+<li><code>image/x-windows-bmp</code></li>
+<li><code>image/webp</code></li>
+</ul>
+<h3 id='list-of-supported-extensions'>List of supported extensions</h3>
+<ul>
+<li><code>gif</code></li>
+<li><code>jpg</code></li>
+<li><code>jpeg</code></li>
+<li><code>jpe</code></li>
+<li><code>png</code></li>
+<li><code>svg</code></li>
+<li><code>svgz</code></li>
+<li><code>tif</code></li>
+<li><code>tiff</code></li>
+<li><code>ico</code></li>
+<li><code>bm</code></li>
+<li><code>bmp</code></li>
+<li><code>webp</code></li>
+</ul>
 <h1 id='sounds'>Sounds</h1><h2 id='get-a-sound'>Get a sound</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/sounds/:id
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
@@ -1342,6 +1424,85 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>The url for the sound</td>
 </tr>
 </tbody></table>
+<h2 id='upload-a-sound'>Upload a sound</h2>
+<p>Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded data.</p>
+<h3 id='via-url-using-a-miltipart-form'>Via URL (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  --data-binary <span class="s1">$'------WebKitFormBoundaryMVLbHo8cqv4TIsAb</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="url"</span><span class="se">\r\n\r\n</span><span class="s1">https://www.example.com/file.mp3</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryMVLbHo8cqv4TIsAb--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-url-using-json'>Via URL (using JSON)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: application/json'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"url":"https://www.example.com/file.mp3"}'</span>
+</code></pre><h3 id='via-file-using-a-miltipart-form'>Via File (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span>
+   -H <span class="s1">'Authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+   -H <span class="s1">'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'</span>
+   -H <span class="s1">'accept: application/json'</span> 
+   --data-binary <span class="s1">$'------WebKitFormBoundaryru7KOTWamg3KC9gw</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="file"; filename="file.JPG"</span><span class="se">\r\n</span><span class="s1">Content-Type: audio/mp3</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryru7KOTWamg3KC9gw--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-base64-data-parameter'>Via base64 data parameter</h3>
+<blockquote>
+<p>Please note that for base64 uploads the <code>Content-Type</code> header must be set to the content type of the sound and not to <code>application/json</code> </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: audio/mp3'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"data":"&lt;base64 encoded sound&gt;"}'</span>
+</code></pre><h3 id='sample-response'>Sample Response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"sounds"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="s2">"2018-01-08T23:46:55.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://prod.assets.cerego.com/uploads/sound/uploader/123/file.mp3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="s2">"/v3/sounds/123"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='list-of-supported-content-types'>List of supported Content-Types</h3>
+<ul>
+<li><code>audio/aiff</code></li>
+<li><code>audio/x-aiff</code></li>
+<li><code>audio/mpeg</code></li>
+<li><code>audio/x-mpeg</code></li>
+<li><code>audio/mp3</code></li>
+<li><code>audio/mpeg3</code></li>
+<li><code>audio/x-mpeg3</code></li>
+<li><code>audio/x-m4a</code></li>
+<li><code>audio/mp4</code></li>
+<li><code>audio/wav</code></li>
+<li><code>audio/x-wav</code></li>
+<li><code>audio/ogg</code></li>
+<li><code>audio/midi</code></li>
+<li><code>audio/x-mid</code></li>
+<li><code>audio/x-midi</code></li>
+</ul>
+<h3 id='list-of-supported-extensions'>List of supported extensions</h3>
+<ul>
+<li><code>aif</code></li>
+<li><code>aifc</code></li>
+<li><code>aiff</code></li>
+<li><code>m2a</code></li>
+<li><code>mp2</code></li>
+<li><code>mp3</code></li>
+<li><code>mp4</code></li>
+<li><code>mpa</code></li>
+<li><code>mpg</code></li>
+<li><code>mpga</code></li>
+<li><code>wav</code></li>
+<li><code>ogg</code></li>
+<li><code>mid</code></li>
+<li><code>midi</code></li>
+<li><code>kar</code></li>
+<li><code>m4a</code></li>
+</ul>
 <h1 id='errors'>Errors</h1>
 <p>Cerego uses the following error codes:</p>
 
@@ -1393,7 +1554,6 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="json">json</a>
           </div>
       </div>
     </div>
