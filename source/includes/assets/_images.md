@@ -15,7 +15,7 @@ curl https://cerego.com/api/v3/images/:id
     "type": "images",
     "attributes": {
       "created-at": "2014-08-19T17:17:24.000Z",
-      "url": "https://assets-cerego-com.s3-us-west-2.amazonaws.com/uploads/image/uploader/662672/61evfr7fsl2aco.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPDWQGIIRP4W4IMQ%2F20180118%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20180118T205352Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=66e58e74fc83d0b217e53a8644117ee5fcfb91bb7fc6d0d800cec68a7482b36b",
+      "url": "https://prod.assets.cerego.com/uploads/image/uploader/662672/61evfr7fsl2aco.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPDWQGIIRP4W4IMQ%2F20180118%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20180118T205352Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=66e58e74fc83d0b217e53a8644117ee5fcfb91bb7fc6d0d800cec68a7482b36b",
       "orig-url": null,
       "orig-owner": null,
       "license-id": null,

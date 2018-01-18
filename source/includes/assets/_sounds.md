@@ -15,7 +15,7 @@ curl https://cerego.com/api/v3/sounds/:id
     "type": "sounds",
     "attributes": {
       "created-at": "2014-08-19T17:17:24.000Z",
-      "url": "https://assets.cerego.com/uploads/sound/uploader/662672/h3ll0m473.mp3",
+      "url": "https://prod.assets.cerego.com/uploads/sound/uploader/662672/h3ll0m473.mp3",
       "expires-at": "2018-01-19T20:52:57.182Z"
     },
     "links": {
