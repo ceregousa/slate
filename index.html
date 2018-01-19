@@ -285,6 +285,14 @@
               </ul>
           </li>
           <li>
+            <a href="#my-study-items" class="toc-h1 toc-link" data-title="My Study Items">My Study Items</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-the-current-user-39-s-recommended-study-items" class="toc-h2 toc-link" data-title="Get the current user's recommended study items">Get the current user's recommended study items</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </div>
@@ -1503,6 +1511,251 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <li><code>kar</code></li>
 <li><code>m4a</code></li>
 </ul>
+<h1 id='my-study-items'>My Study Items</h1><h2 id='get-the-current-user-39-s-recommended-study-items'>Get the current user&#39;s recommended study items</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/my/study_items
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4380603324461362534"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study-items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"learning-engine-guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31b836b5-db1a-11e3-80a0-0ad95b10f3a0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Study"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MultipleChoiceLimited"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ReverseMultipleChoiceLimited"</span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"164887"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"723650"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sets"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103127985695213353"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study-items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"learning-engine-guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f8e6f00-db1a-11e3-80a0-0ad95b10f3a0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Study"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MultipleChoiceLimited"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ReverseMultipleChoiceLimited"</span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"164893"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"723650"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sets"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2996372568742862356"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study-items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"learning-engine-guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f8e6f91-db1a-11e3-80a0-0ad95b10f3a0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Study"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MultipleChoiceLimited"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ReverseMultipleChoiceLimited"</span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"164897"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"723650"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sets"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2499760633674352370"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study-items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"learning-engine-guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31c9370c-db1a-11e3-80a0-0ad95b10f3a0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"MultipleChoiceLimited"</span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9072917"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memory-estimates"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177670"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"728001"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sets"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total-pages"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"see-next-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-25T10:21:55.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eligible-items-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unstarted-items-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"show-fading-tab"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"body-text-html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You'll </span><span class="se">\u</span><span class="s2">003cb</span><span class="se">\u</span><span class="s2">003ereview 19</span><span class="se">\u</span><span class="s2">003c/b</span><span class="se">\u</span><span class="s2">003e concepts from Chinese Core 1000: Step 3 [Simplified], Thầy Vinh Series and 2 other sets</span><span class="se">\u</span><span class="s2">003cbr</span><span class="se">\u</span><span class="s2">003e</span><span class="se">\u</span><span class="s2">003cbr</span><span class="se">\u</span><span class="s2">003eThis will take about 5 minutes."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"button-text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let's Review!"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"study-session-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7fbf38b-2f45-4986-9e59-ab6658d3ce92"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves an array of study items representing a study session for the user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/my/study_items</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter[status]</td>
+<td>(fading or recommended) Fading returns only items that need review. Recommended returns only items that are unstarted or need review. If you don&#39;t provide this, it&#39;ll return a study session that even includes things that are good for now.</td>
+</tr>
+<tr>
+<td>set_id</td>
+<td>Return only study items from the specified set</td>
+</tr>
+<tr>
+<td>series_id</td>
+<td>Return only study items from the specified series</td>
+</tr>
+<tr>
+<td>group_id</td>
+<td>Return only study items from the specified course</td>
+</tr>
+</tbody></table>
+<h3 id='studyitem-object'>StudyItem Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>This is a unique id for the study item. It doesn&#39;t correspond to anything and is randomly generated.</td>
+</tr>
+<tr>
+<td>learning_engine_guid</td>
+<td>string</td>
+<td>This is the learning engine guid for the facet being studied. In the case of an instructional item which doesn&#39;t have a learning engine guid, it is a random string.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>string[]</td>
+<td>An array of quizzes that should be performed.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Relation</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memory</td>
+<td>MemoryEstimate</td>
+<td>The user&#39;s memory estimate for this item. Can be nil if the user hasn&#39;t studied it or it is an instructional item.</td>
+</tr>
+<tr>
+<td>item</td>
+<td>Item</td>
+<td>The item that this StudyItem is indicating should be studied.</td>
+</tr>
+<tr>
+<td>collection</td>
+<td>Collection</td>
+<td>The set or series that this item was picked from.</td>
+</tr>
+</tbody></table>
+<h3 id='meta'>Meta</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total-pages</td>
+<td>null</td>
+<td>This endpoint is not paginated. It returns a good session size worth of study items.</td>
+</tr>
+<tr>
+<td>total-count</td>
+<td>integer</td>
+<td>The number of study items</td>
+</tr>
+<tr>
+<td>see-next-at</td>
+<td>datetime</td>
+<td>The earliest date at which an item from this context will become/became due</td>
+</tr>
+<tr>
+<td>eligible-items-count</td>
+<td>integer</td>
+<td>The number of fading items that were returned</td>
+</tr>
+<tr>
+<td>unstarted-items-count</td>
+<td>integer</td>
+<td>The number of unstarted items that were returned</td>
+</tr>
+<tr>
+<td>body-text-html</td>
+<td>string</td>
+<td>A string that explains to the user what they will study</td>
+</tr>
+<tr>
+<td>button-text</td>
+<td>string</td>
+<td>A string representing a call to action to get the user to study</td>
+</tr>
+<tr>
+<td>study-session-id</td>
+<td>string</td>
+<td>A guid representing this entire set of study items. The study session will be temporarily saved on the back end. You can pass this guid to another study endpoint to say you want to study these study items.</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>Cerego uses the following error codes:</p>
 
