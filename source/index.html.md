@@ -15,6 +15,7 @@ includes:
   - courses/users
   - assets/images
   - assets/sounds
+  - my/study_items
   - errors
 
 search: true
