@@ -15,7 +15,8 @@ curl https://cerego.com/api/v3/sounds/:id
     "type": "sounds",
     "attributes": {
       "created-at": "2014-08-19T17:17:24.000Z",
-      "url": "https://assets.cerego.com/uploads/sound/uploader/662672/h3ll0m473.mp3"
+      "url": "https://prod.assets.cerego.com/uploads/sound/uploader/662672/h3ll0m473.mp3",
+      "expires-at": "2018-01-19T20:52:57.182Z"
     },
     "links": {
       "self": "/v3/sounds/123456"
@@ -23,6 +24,9 @@ curl https://cerego.com/api/v3/sounds/:id
   }
 }
 ```
+
+> Please note that signed URLs will expire 24 hours after the request is made, use the `expires-at` field to judge how long the URL is valid for.
+
 
 This endpoint retrieves an sound.
 
@@ -91,7 +95,8 @@ curl 'https://cerego.com/api/v3/sounds'
     "attributes": {
       "created-at":"2018-01-08T23:46:55.000Z",
       "url":"https://prod.assets.cerego.com/uploads/sound/uploader/123/file.mp3",
-      "alt-tag":null
+      "alt-tag":null,
+      "expires-at":"2018-01-19T20:52:57.182Z"
     },
     "links": {
       "self":"/v3/sounds/123"
