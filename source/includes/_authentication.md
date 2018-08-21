@@ -2,7 +2,7 @@
 
 Cerego utilizes Bearer tokens to authenticate API calls. 
 
-To easily acquire your Bearer token please log into your [Cerego](https://cerego.com/) account (that has permission for the calls you wish to make) and then [click here.](https://cerego.com/configuration)
+To easily acquire your Bearer token please log into your [Cerego](https://cerego.com/) account (that has permission for the calls you wish to make) and then [click here.](https://cerego.com/api/v3/my/oauth2_access_tokens)
 
 On the configuration page you will be able to get your Bearer token that you will need to use for API calls.
 

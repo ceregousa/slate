@@ -68,7 +68,7 @@ This endpoint retrieves all users that are connected to a specific course.
 
 Attribute | type | Description
 --------- | --------- | -----------
-created_at | datetime | When the course was created
+created_at | datetime | When the user was created
 name | string | The name of the user
 username | string | The username of the user
 email | string | The email of the user
@@ -94,7 +94,7 @@ cost | integer | Cost in cents to enable this course
 
 ```shell
 curl https://cerego.com/api/v3/courses/:id/users
-    -d '{"email": "zaguios@gmail.com", "name": "Christopher Gregorio"}'
+    -d '{"email": "developers@cerego.com", "name": "Sarah Gough"}'
     -X POST
     -H "Content-Type: application/json"
     -H "Authorization: Bearer <BEARER_TOKEN>"

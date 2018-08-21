@@ -13,9 +13,9 @@ includes:
   - authentication
   - courses
   - courses/users
-  - assets/images
-  - assets/sounds
   - my/study_items
+  - assets
+  - items
   - errors
 
 search: true
