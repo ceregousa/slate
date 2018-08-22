@@ -263,7 +263,15 @@
               </ul>
           </li>
           <li>
-            <a href="#images" class="toc-h1 toc-link" data-title="Images">Images</a>
+            <a href="#my-study-items" class="toc-h1 toc-link" data-title="My Study Items">My Study Items</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-the-current-user-39-s-recommended-study-items" class="toc-h2 toc-link" data-title="Get the current user's recommended study items">Get the current user's recommended study items</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#assets" class="toc-h1 toc-link" data-title="Assets">Assets</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-an-image" class="toc-h2 toc-link" data-title="Get an image">Get an image</a>
@@ -271,24 +279,40 @@
                   <li>
                     <a href="#upload-an-image" class="toc-h2 toc-link" data-title="Upload an image">Upload an image</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#sounds" class="toc-h1 toc-link" data-title="Sounds">Sounds</a>
-              <ul class="toc-list-h2">
                   <li>
                     <a href="#get-a-sound" class="toc-h2 toc-link" data-title="Get a sound">Get a sound</a>
                   </li>
                   <li>
                     <a href="#upload-a-sound" class="toc-h2 toc-link" data-title="Upload a sound">Upload a sound</a>
                   </li>
+                  <li>
+                    <a href="#get-a-document" class="toc-h2 toc-link" data-title="Get a document">Get a document</a>
+                  </li>
+                  <li>
+                    <a href="#upload-a-document" class="toc-h2 toc-link" data-title="Upload a document">Upload a document</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#my-study-items" class="toc-h1 toc-link" data-title="My Study Items">My Study Items</a>
+            <a href="#items" class="toc-h1 toc-link" data-title="Items">Items</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-the-current-user-39-s-recommended-study-items" class="toc-h2 toc-link" data-title="Get the current user's recommended study items">Get the current user's recommended study items</a>
+                    <a href="#list-all-items-in-a-set" class="toc-h2 toc-link" data-title="List all items in a set">List all items in a set</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-item" class="toc-h2 toc-link" data-title="Get an item">Get an item</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-item" class="toc-h2 toc-link" data-title="Create an item">Create an item</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-item" class="toc-h2 toc-link" data-title="Update an item">Update an item</a>
+                  </li>
+                  <li>
+                    <a href="#delete-an-item" class="toc-h2 toc-link" data-title="Delete an item">Delete an item</a>
+                  </li>
+                  <li>
+                    <a href="#clone-an-item" class="toc-h2 toc-link" data-title="Clone an item">Clone an item</a>
                   </li>
               </ul>
           </li>
@@ -338,7 +362,7 @@
 <h1 id='authentication'>Authentication</h1>
 <p>Cerego utilizes Bearer tokens to authenticate API calls. </p>
 
-<p>To easily acquire your Bearer token please log into your <a href="https://cerego.com/">Cerego</a> account (that has permission for the calls you wish to make) and then <a href="https://cerego.com/configuration">click here.</a></p>
+<p>To easily acquire your Bearer token please log into your <a href="https://cerego.com/">Cerego</a> account (that has permission for the calls you wish to make) and then <a href="https://cerego.com/api/v3/my/oauth2_access_tokens">click here.</a></p>
 
 <p>On the configuration page you will be able to get your Bearer token that you will need to use for API calls.</p>
 
@@ -1037,7 +1061,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>created_at</td>
 <td>datetime</td>
-<td>When the course was created</td>
+<td>When the user was created</td>
 </tr>
 <tr>
 <td>name</td>
@@ -1120,7 +1144,7 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </tr>
 </tbody></table>
 <h2 id='add-a-user-to-a-course'>Add a user to a course</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/courses/:id/users
-    -d <span class="s1">'{"email": "zaguios@gmail.com", "name": "Christopher Gregorio"}'</span>
+    -d <span class="s1">'{"email": "developers@cerego.com", "name": "Sarah Gough"}'</span>
     -X POST
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
@@ -1253,264 +1277,6 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <p><code>DELETE https://cerego.com/api/v3/courses/:id/users/:id</code></p>
 
 <aside class="notice">Removing a user does NOT clear their memories or progress.</aside>
-<h1 id='images'>Images</h1><h2 id='get-an-image'>Get an image</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/images/:id
-    -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.cerego.com/uploads/image/uploader/662672/h3ll0m473.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/123456"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves an image.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://cerego.com/api/v3/images/:id</code></p>
-<h3 id='image-object'>Image Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>created_at</td>
-<td>datetime</td>
-<td>The time which the image was created</td>
-</tr>
-<tr>
-<td>url</td>
-<td>string</td>
-<td>The url for the image</td>
-</tr>
-<tr>
-<td>orig-url</td>
-<td>string</td>
-<td>Link to where the url was if it was downloaded by an external resource</td>
-</tr>
-<tr>
-<td>orig-owner</td>
-<td>string</td>
-<td>The name of the person who originally created the image if exported externally</td>
-</tr>
-<tr>
-<td>license-id</td>
-<td>integer</td>
-<td>The id for the type of license on the image</td>
-</tr>
-<tr>
-<td>alt-tag</td>
-<td>string</td>
-<td>The alt message when you hover over the image</td>
-</tr>
-</tbody></table>
-<h2 id='upload-an-image'>Upload an image</h2>
-<p>Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded data.</p>
-<h3 id='via-url-using-a-miltipart-form'>Via URL (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
-  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'</span>
-  -H <span class="s1">'accept: application/json'</span>
-  --data-binary <span class="s1">$'------WebKitFormBoundaryMVLbHo8cqv4TIsAb</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="url"</span><span class="se">\r\n\r\n</span><span class="s1">https://www.example.com/file.png</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryMVLbHo8cqv4TIsAb--</span><span class="se">\r\n</span><span class="s1">'</span>
-</code></pre><h3 id='via-url-using-json'>Via URL (using JSON)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
-  -X POST 
-  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-  -H <span class="s1">'content-type: application/json'</span>
-  -H <span class="s1">'accept: application/json'</span>
-  -d <span class="s1">'{"url":"https://www.example.com/file.png"}'</span>
-</code></pre><h3 id='via-file-using-a-miltipart-form'>Via File (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span>
-   -H <span class="s1">'Authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-   -H <span class="s1">'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'</span>
-   -H <span class="s1">'accept: application/json'</span> 
-   --data-binary <span class="s1">$'------WebKitFormBoundaryru7KOTWamg3KC9gw</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="file"; filename="file.JPG"</span><span class="se">\r\n</span><span class="s1">Content-Type: image/jpeg</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryru7KOTWamg3KC9gw--</span><span class="se">\r\n</span><span class="s1">'</span>
-</code></pre><h3 id='via-base64-data-parameter'>Via base64 data parameter</h3>
-<blockquote>
-<p>Please note that for base64 uploads the <code>Content-Type</code> header must be set to the content type of the image and not to <code>application/json</code> </p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
-  -X POST 
-  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-  -H <span class="s1">'content-type: image/jpeg'</span>
-  -H <span class="s1">'accept: application/json'</span>
-  -d <span class="s1">'{"data":"&lt;base64 encoded image&gt;"}'</span>
-</code></pre><h3 id='sample-response'>Sample Response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"images"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="s2">"2018-01-08T23:46:55.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://prod.assets.cerego.com/uploads/image/uploader/123/file.JPG"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"license-id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="kc">null</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="s2">"/v3/images/123"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='list-of-supported-content-types'>List of supported Content-Types</h3>
-<ul>
-<li><code>image/gif</code></li>
-<li><code>image/jpg</code></li>
-<li><code>image/jpeg</code></li>
-<li><code>image/pjpeg</code></li>
-<li><code>image/png</code></li>
-<li><code>image/svg+xml</code></li>
-<li><code>image/tiff</code></li>
-<li><code>image/x-icon</code></li>
-<li><code>image/bmp</code></li>
-<li><code>image/x-bmp</code></li>
-<li><code>image/x-ms-bmp</code></li>
-<li><code>image/x-windows-bmp</code></li>
-<li><code>image/webp</code></li>
-</ul>
-<h3 id='list-of-supported-extensions'>List of supported extensions</h3>
-<ul>
-<li><code>gif</code></li>
-<li><code>jpg</code></li>
-<li><code>jpeg</code></li>
-<li><code>jpe</code></li>
-<li><code>png</code></li>
-<li><code>svg</code></li>
-<li><code>svgz</code></li>
-<li><code>tif</code></li>
-<li><code>tiff</code></li>
-<li><code>ico</code></li>
-<li><code>bm</code></li>
-<li><code>bmp</code></li>
-<li><code>webp</code></li>
-</ul>
-<h1 id='sounds'>Sounds</h1><h2 id='get-a-sound'>Get a sound</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/sounds/:id
-    -H <span class="s2">"Content-Type: application/json"</span>
-    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sounds"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets.cerego.com/uploads/sound/uploader/662672/h3ll0m473.mp3"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/sounds/123456"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves an sound.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://cerego.com/api/v3/sounds/:id</code></p>
-<h3 id='sound-object'>Sound Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>created_at</td>
-<td>datetime</td>
-<td>The time which the sound was created</td>
-</tr>
-<tr>
-<td>url</td>
-<td>string</td>
-<td>The url for the sound</td>
-</tr>
-</tbody></table>
-<h2 id='upload-a-sound'>Upload a sound</h2>
-<p>Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded data.</p>
-<h3 id='via-url-using-a-miltipart-form'>Via URL (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
-  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'</span>
-  -H <span class="s1">'accept: application/json'</span>
-  --data-binary <span class="s1">$'------WebKitFormBoundaryMVLbHo8cqv4TIsAb</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="url"</span><span class="se">\r\n\r\n</span><span class="s1">https://www.example.com/file.mp3</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryMVLbHo8cqv4TIsAb--</span><span class="se">\r\n</span><span class="s1">'</span>
-</code></pre><h3 id='via-url-using-json'>Via URL (using JSON)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
-  -X POST 
-  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-  -H <span class="s1">'content-type: application/json'</span>
-  -H <span class="s1">'accept: application/json'</span>
-  -d <span class="s1">'{"url":"https://www.example.com/file.mp3"}'</span>
-</code></pre><h3 id='via-file-using-a-miltipart-form'>Via File (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span>
-   -H <span class="s1">'Authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-   -H <span class="s1">'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'</span>
-   -H <span class="s1">'accept: application/json'</span> 
-   --data-binary <span class="s1">$'------WebKitFormBoundaryru7KOTWamg3KC9gw</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="file"; filename="file.JPG"</span><span class="se">\r\n</span><span class="s1">Content-Type: audio/mp3</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryru7KOTWamg3KC9gw--</span><span class="se">\r\n</span><span class="s1">'</span>
-</code></pre><h3 id='via-base64-data-parameter'>Via base64 data parameter</h3>
-<blockquote>
-<p>Please note that for base64 uploads the <code>Content-Type</code> header must be set to the content type of the sound and not to <code>application/json</code> </p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
-  -X POST 
-  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
-  -H <span class="s1">'content-type: audio/mp3'</span>
-  -H <span class="s1">'accept: application/json'</span>
-  -d <span class="s1">'{"data":"&lt;base64 encoded sound&gt;"}'</span>
-</code></pre><h3 id='sample-response'>Sample Response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"sounds"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="s2">"2018-01-08T23:46:55.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://prod.assets.cerego.com/uploads/sound/uploader/123/file.mp3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="kc">null</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="s2">"/v3/sounds/123"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='list-of-supported-content-types'>List of supported Content-Types</h3>
-<ul>
-<li><code>audio/aiff</code></li>
-<li><code>audio/x-aiff</code></li>
-<li><code>audio/mpeg</code></li>
-<li><code>audio/x-mpeg</code></li>
-<li><code>audio/mp3</code></li>
-<li><code>audio/mpeg3</code></li>
-<li><code>audio/x-mpeg3</code></li>
-<li><code>audio/x-m4a</code></li>
-<li><code>audio/mp4</code></li>
-<li><code>audio/wav</code></li>
-<li><code>audio/x-wav</code></li>
-<li><code>audio/ogg</code></li>
-<li><code>audio/midi</code></li>
-<li><code>audio/x-mid</code></li>
-<li><code>audio/x-midi</code></li>
-</ul>
-<h3 id='list-of-supported-extensions'>List of supported extensions</h3>
-<ul>
-<li><code>aif</code></li>
-<li><code>aifc</code></li>
-<li><code>aiff</code></li>
-<li><code>m2a</code></li>
-<li><code>mp2</code></li>
-<li><code>mp3</code></li>
-<li><code>mp4</code></li>
-<li><code>mpa</code></li>
-<li><code>mpg</code></li>
-<li><code>mpga</code></li>
-<li><code>wav</code></li>
-<li><code>ogg</code></li>
-<li><code>mid</code></li>
-<li><code>midi</code></li>
-<li><code>kar</code></li>
-<li><code>m4a</code></li>
-</ul>
 <h1 id='my-study-items'>My Study Items</h1><h2 id='get-the-current-user-39-s-recommended-study-items'>Get the current user&#39;s recommended study items</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/my/study_items
     -H <span class="s2">"Content-Type: application/json"</span>
     -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
@@ -1756,6 +1522,730 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>A guid representing this entire set of study items. The study session will be temporarily saved on the back end. You can pass this guid to another study endpoint to say you want to study these study items.</td>
 </tr>
 </tbody></table>
+<h1 id='assets'>Assets</h1><h2 id='get-an-image'>Get an image</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/images/:id
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"662672"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod.assets.cerego.com/uploads/image/uploader/662672/61evfr7fsl2aco.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIPDWQGIIRP4W4IMQ%2F20180118%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20180118T205352Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=66e58e74fc83d0b217e53a8644117ee5fcfb91bb7fc6d0d800cec68a7482b36b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"license-id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expires-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T20:52:57.182Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/images/662672"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Please note that signed URLs will expire 24 hours after the request is made, use the <code>expires-at</code> field to judge how long the URL is valid for.</p>
+</blockquote>
+
+<p>This endpoint retrieves an image.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/images/:id</code></p>
+<h3 id='image-object'>Image Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The time which the image was created</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>The url for the image</td>
+</tr>
+<tr>
+<td>orig-url</td>
+<td>string</td>
+<td>Link to where the url was if it was downloaded by an external resource</td>
+</tr>
+<tr>
+<td>orig-owner</td>
+<td>string</td>
+<td>The name of the person who originally created the image if exported externally</td>
+</tr>
+<tr>
+<td>license-id</td>
+<td>integer</td>
+<td>The id for the type of license on the image</td>
+</tr>
+<tr>
+<td>alt-tag</td>
+<td>string</td>
+<td>The alt message when you hover over the image</td>
+</tr>
+</tbody></table>
+<h2 id='upload-an-image'>Upload an image</h2>
+<p>Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded data.</p>
+<h3 id='via-url-using-a-miltipart-form'>Via URL (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  --data-binary <span class="s1">$'------WebKitFormBoundaryMVLbHo8cqv4TIsAb</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="url"</span><span class="se">\r\n\r\n</span><span class="s1">https://www.example.com/file.png</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryMVLbHo8cqv4TIsAb--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-url-using-json'>Via URL (using JSON)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: application/json'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"url":"https://www.example.com/file.png"}'</span>
+</code></pre><h3 id='via-file-using-a-miltipart-form'>Via File (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span>
+   -H <span class="s1">'Authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+   -H <span class="s1">'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'</span>
+   -H <span class="s1">'accept: application/json'</span> 
+   --data-binary <span class="s1">$'------WebKitFormBoundaryru7KOTWamg3KC9gw</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="file"; filename="file.JPG"</span><span class="se">\r\n</span><span class="s1">Content-Type: image/jpeg</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryru7KOTWamg3KC9gw--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-base64-data-parameter'>Via base64 data parameter</h3>
+<blockquote>
+<p>Please note that for base64 uploads the <code>Content-Type</code> header must be set to the content type of the image and not to <code>application/json</code> </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/images'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: image/jpeg'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"data":"&lt;base64 encoded image&gt;"}'</span>
+</code></pre><h3 id='sample-response'>Sample Response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"images"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="s2">"2018-01-08T23:46:55.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://prod.assets.cerego.com/uploads/image/uploader/123/file.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orig-url"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orig-owner"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"license-id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expires-at"</span><span class="p">:</span><span class="s2">"2018-01-19T20:52:57.182Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="s2">"/v3/images/123"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='list-of-supported-content-types'>List of supported Content-Types</h3>
+<ul>
+<li><code>image/gif</code></li>
+<li><code>image/jpg</code></li>
+<li><code>image/jpeg</code></li>
+<li><code>image/pjpeg</code></li>
+<li><code>image/png</code></li>
+<li><code>image/svg+xml</code></li>
+<li><code>image/tiff</code></li>
+<li><code>image/x-icon</code></li>
+<li><code>image/bmp</code></li>
+<li><code>image/x-bmp</code></li>
+<li><code>image/x-ms-bmp</code></li>
+<li><code>image/x-windows-bmp</code></li>
+<li><code>image/webp</code></li>
+</ul>
+<h3 id='list-of-supported-extensions'>List of supported extensions</h3>
+<ul>
+<li><code>gif</code></li>
+<li><code>jpg</code></li>
+<li><code>jpeg</code></li>
+<li><code>jpe</code></li>
+<li><code>png</code></li>
+<li><code>svg</code></li>
+<li><code>svgz</code></li>
+<li><code>tif</code></li>
+<li><code>tiff</code></li>
+<li><code>ico</code></li>
+<li><code>bm</code></li>
+<li><code>bmp</code></li>
+<li><code>webp</code></li>
+</ul>
+<h2 id='get-a-sound'>Get a sound</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/sounds/:id
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sounds"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod.assets.cerego.com/uploads/sound/uploader/662672/h3ll0m473.mp3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expires-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T20:52:57.182Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/sounds/123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Please note that signed URLs will expire 24 hours after the request is made, use the <code>expires-at</code> field to judge how long the URL is valid for.</p>
+</blockquote>
+
+<p>This endpoint retrieves an sound.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/sounds/:id</code></p>
+<h3 id='sound-object'>Sound Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The time which the sound was created</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>The url for the sound</td>
+</tr>
+</tbody></table>
+<h2 id='upload-a-sound'>Upload a sound</h2>
+<p>Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded data.</p>
+<h3 id='via-url-using-a-miltipart-form-2'>Via URL (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  --data-binary <span class="s1">$'------WebKitFormBoundaryMVLbHo8cqv4TIsAb</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="url"</span><span class="se">\r\n\r\n</span><span class="s1">https://www.example.com/file.mp3</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryMVLbHo8cqv4TIsAb--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-url-using-json-2'>Via URL (using JSON)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: application/json'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"url":"https://www.example.com/file.mp3"}'</span>
+</code></pre><h3 id='via-file-using-a-miltipart-form-2'>Via File (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span>
+   -H <span class="s1">'Authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+   -H <span class="s1">'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'</span>
+   -H <span class="s1">'accept: application/json'</span> 
+   --data-binary <span class="s1">$'------WebKitFormBoundaryru7KOTWamg3KC9gw</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="file"; filename="file.JPG"</span><span class="se">\r\n</span><span class="s1">Content-Type: audio/mp3</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryru7KOTWamg3KC9gw--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-base64-data-parameter-2'>Via base64 data parameter</h3>
+<blockquote>
+<p>Please note that for base64 uploads the <code>Content-Type</code> header must be set to the content type of the sound and not to <code>application/json</code> </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/sounds'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: audio/mp3'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"data":"&lt;base64 encoded sound&gt;"}'</span>
+</code></pre><h3 id='sample-response-2'>Sample Response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"sounds"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="s2">"2018-01-08T23:46:55.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://prod.assets.cerego.com/uploads/sound/uploader/123/file.mp3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expires-at"</span><span class="p">:</span><span class="s2">"2018-01-19T20:52:57.182Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="s2">"/v3/sounds/123"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='list-of-supported-content-types-2'>List of supported Content-Types</h3>
+<ul>
+<li><code>audio/aiff</code></li>
+<li><code>audio/x-aiff</code></li>
+<li><code>audio/mpeg</code></li>
+<li><code>audio/x-mpeg</code></li>
+<li><code>audio/mp3</code></li>
+<li><code>audio/mpeg3</code></li>
+<li><code>audio/x-mpeg3</code></li>
+<li><code>audio/x-m4a</code></li>
+<li><code>audio/mp4</code></li>
+<li><code>audio/wav</code></li>
+<li><code>audio/x-wav</code></li>
+<li><code>audio/ogg</code></li>
+<li><code>audio/midi</code></li>
+<li><code>audio/x-mid</code></li>
+<li><code>audio/x-midi</code></li>
+</ul>
+<h3 id='list-of-supported-extensions-2'>List of supported extensions</h3>
+<ul>
+<li><code>aif</code></li>
+<li><code>aifc</code></li>
+<li><code>aiff</code></li>
+<li><code>m2a</code></li>
+<li><code>mp2</code></li>
+<li><code>mp3</code></li>
+<li><code>mp4</code></li>
+<li><code>mpa</code></li>
+<li><code>mpg</code></li>
+<li><code>mpga</code></li>
+<li><code>wav</code></li>
+<li><code>ogg</code></li>
+<li><code>mid</code></li>
+<li><code>midi</code></li>
+<li><code>kar</code></li>
+<li><code>m4a</code></li>
+</ul>
+<h2 id='get-a-document'>Get a document</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/documents/:id
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"documents"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-19T17:17:24.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod.assets.cerego.com/uploads/document/uploader/662672/h3ll0m473.pdf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"content-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expires-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T20:52:57.182Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/documents/123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Please note that signed URLs will expire 24 hours after the request is made, use the <code>expires-at</code> field to judge how long the URL is valid for.</p>
+</blockquote>
+
+<p>This endpoint retrieves an document.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/documents/:id</code></p>
+<h3 id='document-object'>Document Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The time which the document was created</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>The url for the document</td>
+</tr>
+</tbody></table>
+<h2 id='upload-a-document'>Upload a document</h2>
+<p>Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded data.</p>
+<h3 id='via-url-using-a-miltipart-form-3'>Via URL (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/documents'</span> 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  --data-binary <span class="s1">$'------WebKitFormBoundaryMVLbHo8cqv4TIsAb</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="url"</span><span class="se">\r\n\r\n</span><span class="s1">https://www.example.com/file.pdf</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryMVLbHo8cqv4TIsAb--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-url-using-json-3'>Via URL (using JSON)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/documents'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: application/json'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"url":"https://www.example.com/file.pdf"}'</span>
+</code></pre><h3 id='via-file-using-a-miltipart-form-3'>Via File (using a miltipart form)</h3><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/documents'</span>
+   -H <span class="s1">'Authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+   -H <span class="s1">'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'</span>
+   -H <span class="s1">'accept: application/json'</span> 
+   --data-binary <span class="s1">$'------WebKitFormBoundaryru7KOTWamg3KC9gw</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="file"; filename="file.JPG"</span><span class="se">\r\n</span><span class="s1">Content-Type: application/pdf</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryru7KOTWamg3KC9gw--</span><span class="se">\r\n</span><span class="s1">'</span>
+</code></pre><h3 id='via-base64-data-parameter-3'>Via base64 data parameter</h3>
+<blockquote>
+<p>Please note that for base64 uploads the <code>Content-Type</code> header must be set to the content type of the document and not to <code>application/json</code> </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://cerego.com/api/v3/documents'</span> 
+  -X POST 
+  -H <span class="s1">'authorization: Bearer &lt;BEARER_TOKEN&gt;'</span> 
+  -H <span class="s1">'content-type: application/pdf'</span>
+  -H <span class="s1">'accept: application/json'</span>
+  -d <span class="s1">'{"data":"&lt;base64 encoded document&gt;"}'</span>
+</code></pre><h3 id='sample-response-3'>Sample Response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"documents"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="s2">"2018-01-08T23:46:55.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://prod.assets.cerego.com/uploads/document/uploader/123/file.pdf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alt-tag"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expires-at"</span><span class="p">:</span><span class="s2">"2018-01-19T20:52:57.182Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="s2">"/v3/documents/123"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='list-of-supported-content-types-3'>List of supported Content-Types</h3>
+<ul>
+<li><code>application/pdf</code></li>
+</ul>
+<h3 id='list-of-supported-extensions-3'>List of supported extensions</h3>
+<ul>
+<li><code>pdf</code></li>
+</ul>
+<h1 id='items'>Items</h1><h2 id='list-all-items-in-a-set'>List all items in a set</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/sets/:id/items
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1166905"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T01:56:06.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"study-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"note-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"note-tab-text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"explanation-type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is-studiable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"template-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vocabulary"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1453103"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facets"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/items/1166905"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cerego.com/api/v3/sets/123456/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=15"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cerego.com/api/v3/sets/123456/items?page%5Bnumber%5D=2&amp;page%5Bsize%5D=15"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cerego.com/api/v3/sets/123456/items?page%5Bnumber%5D=4&amp;page%5Bsize%5D=15"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"total-pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">53</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all items within a specific set.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/sets/:id/items</code></p>
+<h3 id='item-object'>Item Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Templates</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>All</td>
+<td>When the item was created</td>
+</tr>
+<tr>
+<td>template_type</td>
+<td>enum</td>
+<td>All</td>
+<td><code>associations</code> (flashcards), <code>vocabulary</code>, <code>passages</code>, <code>regions</code>, <code>sequences</code>, <code>patterns</code>, <code>application_questions</code>,  <code>question_and_answers</code>, or <code>instructional_contents</code></td>
+</tr>
+<tr>
+<td>is_studiable</td>
+<td>bool</td>
+<td>All</td>
+<td>Whether or not the item will be made available for study</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>passages</td>
+<td>The full text of the passage</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>regions, patterns, sequences, instrustructional_contents</td>
+<td>The title of the item</td>
+</tr>
+<tr>
+<td>answer_type</td>
+<td>enum</td>
+<td>application_questions, question_and_answers</td>
+<td><code>single_correct</code> (default) or <code>multi_correct</code></td>
+</tr>
+<tr>
+<td>explanation_type</td>
+<td>enum</td>
+<td>application_questions, question_and_answers</td>
+<td><code>explain_item</code> (default)  or <code>explain_facet</code></td>
+</tr>
+<tr>
+<td>ic_subtype</td>
+<td>enum</td>
+<td>instructional_contents</td>
+<td><code>instructional_embed</code>, <code>instructional_document</code>, or <code>instructional_page</code></td>
+</tr>
+<tr>
+<td>note_type</td>
+<td>enum</td>
+<td>All except instructional_contents</td>
+<td><code>item</code> (default) or <code>facet</code></td>
+</tr>
+<tr>
+<td>note_tab_text</td>
+<td>string</td>
+<td>All except instructional_contents</td>
+<td>If set will override the default of &quot;Notes&quot;</td>
+</tr>
+<tr>
+<td>study_type</td>
+<td>enum</td>
+<td>All except instructional_contents</td>
+<td><code>study</code> (default), <code>notes</code> or <code>none</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">Not all attributes are valid for all templates.  Please check the template_type first to see which attributes can be expected.</aside>
+
+<aside class="notice">Instructional Contents have three subtypes, but all three are identical as far as the API response is concerned.  Each subtype however will return a different type of Annotation object in the relationships.</aside>
+
+<aside class="notice">Templates are not required for an item to exist, you can create "placeholder" items before you know which template you will require, and then later update them.</aside>
+
+<table><thead>
+<tr>
+<th>Relationship</th>
+<th>type</th>
+<th>Templates</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image</td>
+<td>images</td>
+<td>regions, passages</td>
+<td>Attached image</td>
+</tr>
+<tr>
+<td>facets</td>
+<td>facets</td>
+<td>All except instructional_contents</td>
+<td>Array of facets (links between a <code>front</code> and <code>back</code>) for the item</td>
+</tr>
+<tr>
+<td>annotations</td>
+<td>annotations</td>
+<td>All except instructional_contents</td>
+<td>Array of notes attached to the item</td>
+</tr>
+<tr>
+<td>sentences</td>
+<td>sentences</td>
+<td>vocabulary</td>
+<td>Array of sentences attached to the vocabulary item</td>
+</tr>
+<tr>
+<td>attached_items</td>
+<td>items</td>
+<td>application_questions, question_and_answers</td>
+<td>Array of instructional_contents attached to the item</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">Not all relationships are valid for all templates.  Please check the template_type first to see which relationships can be expected.</aside>
+<h2 id='get-an-item'>Get an item</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/items/:id
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3205069"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T21:54:20.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"study-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-tab-text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"explanation-type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is-studiable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"template-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"associations"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/items/3205069"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves one item.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v3/items/:id</code></p>
+<h2 id='create-an-item'>Create an item</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/sets/:id/items
+    -d <span class="s1">'{"data":{"attributes":{"position":1}}}'</span>
+    -X POST
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3205068"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T21:54:18.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"study-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-tab-text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"explanation-type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is-studiable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/items/3205068"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint create one item within a specific set.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://cerego.com/api/v3/sets/:id/items</code></p>
+<h2 id='update-an-item'>Update an item</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/items/:id
+    -d <span class="s1">'{ "id":3205069, "type":"items","attributes":{ "created-at":"2018-08-21T21:54:20.000Z","study-type":"study","note-type":"item","note-tab-text":null,"explanation-type":null,"is-studiable":false},"relationships":{"facets":{"data":[]},"annotations":{"data":[]},"sentences":{"data":[]}},"links":{"self":"/v3/items/3205069"},"selected":true,"expanded":true,"errors":["missing_template"],"cardState":"no_template","card":{},"data":{"attributes":{"template-type":"associations"}}}'</span>
+    -X PUT
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3205069"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T21:54:20.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"study-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-tab-text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"explanation-type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is-studiable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"template-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"associations"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/items/3205069"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates one item.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT https://cerego.com/api/v3/items/:id</code></p>
+<h2 id='delete-an-item'>Delete an item</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/items/:id
+    -X DELETE
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>If you successfully make your DELETE request you should receive a 204 No Content</p>
+</blockquote>
+
+<p>This endpoint removes one item.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://cerego.com/api/v3/items/:id</code></p>
+<h2 id='clone-an-item'>Clone an item</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v3/items/:id/clone
+    -d <span class="s1">'{"data":{"attributes":{"target-set-id":123456,"position":2}}}'</span>
+    -X POST
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3205068"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T21:54:18.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"study-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"study"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note-tab-text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"explanation-type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is-studiable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v3/items/3205068"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint clones one item into a specific set.</p>
+
+<aside class="notice">The `target-set-id` parameter is optional, if ommitted the item will be closed into the same set within which it already exists.</aside>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://cerego.com/api/v3/items/:id/clone</code></p>
 <h1 id='errors'>Errors</h1>
 <p>Cerego uses the following error codes:</p>
 
