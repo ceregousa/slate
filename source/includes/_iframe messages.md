@@ -12,6 +12,10 @@ load-module | The user has loaded the assignment before or after a study session
 next-quiz | The user has progressed inside a study session
 end-session | The user has successfully completed a study session
 
+To view the posted messages in your window you can use:
+
+```window.addEventListener("message", function(event) { console.log(JSON.parse(event.data)); }, false);```
+
 
 ## Load Module
 
