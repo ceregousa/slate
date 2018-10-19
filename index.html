@@ -319,6 +319,20 @@
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
+          <li>
+            <a href="#iframe-messages" class="toc-h1 toc-link" data-title="Iframe Messages">Iframe Messages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#load-module" class="toc-h2 toc-link" data-title="Load Module">Load Module</a>
+                  </li>
+                  <li>
+                    <a href="#next-quiz" class="toc-h2 toc-link" data-title="Next Quiz">Next Quiz</a>
+                  </li>
+                  <li>
+                    <a href="#end-session" class="toc-h2 toc-link" data-title="End Session">End Session</a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='https://cerego.com/'>Check out the Cerego website</a></li>
@@ -2290,6 +2304,142 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>503</td>
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+<h1 id='iframe-messages'>Iframe Messages</h1>
+<p>Cerego posts messages detailing information about the current user&#39;s study session and progress.</p>
+
+<p>Messages are posted to the <code>window.parent</code> if inside an iframe, otherwise they are posted to the <code>window.opener</code>.</p>
+
+<p>Cerego posts the following messages:</p>
+
+<table><thead>
+<tr>
+<th>messageType</th>
+<th>Scenario</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>load-module</td>
+<td>The user has loaded the assignment before or after a study session</td>
+</tr>
+<tr>
+<td>next-quiz</td>
+<td>The user has progressed inside a study session</td>
+</tr>
+<tr>
+<td>end-session</td>
+<td>The user has successfully completed a study session</td>
+</tr>
+</tbody></table>
+
+<p>To view the posted messages in your window you can use:</p>
+
+<p><code>window.addEventListener(&quot;message&quot;, function(event) { console.log(JSON.parse(event.data)); }, false);</code></p>
+<h2 id='load-module'>Load Module</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"messageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"load-module"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"set"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">749831</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greek and Roman Gods"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"studiedItemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalStudyTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">245071</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"itemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>When an assignment is launched from LTI or studied directly on Cerego.com, the assignment loads and presents the user with a summary screen.</p>
+
+<p>The following parameters are sent in the <code>load-module</code> message:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>&quot;set&quot; or &quot;series&quot; depending on how the assignment is grouped</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Set or Series id within Cerego</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the assignment</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>The learner&#39;s progress to the goal, or 0 if no goal has been created</td>
+</tr>
+<tr>
+<td>studiedItemsCount</td>
+<td>How many items the learner has studied so far</td>
+</tr>
+<tr>
+<td>totalStudyTime</td>
+<td>Milliseconds spent in study sessions for this assignment</td>
+</tr>
+<tr>
+<td>itemsCount</td>
+<td>Total number of items in the assignment</td>
+</tr>
+</tbody></table>
+<h2 id='next-quiz'>Next Quiz</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+  </span><span class="s2">"messageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"next-quiz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"quizProgress"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quizSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Cerego posts a message when the learner progresses through a study session.</p>
+
+<p>The following parameters are sent in the <code>next-quiz</code> message:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quizProgress</td>
+<td>progress 0-100 through the study session</td>
+</tr>
+<tr>
+<td>quizSize</td>
+<td>Number of total quiz screens. May increase on wrong answers.</td>
+</tr>
+</tbody></table>
+<h2 id='end-session'>End Session</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+  </span><span class="s2">"messageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end-session"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"quizProgress"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quizSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>On successful completion of the study session, Cerego posts the <code>end-session message</code>:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quizProgress</td>
+<td>100</td>
+</tr>
+<tr>
+<td>quizSize</td>
+<td>Number of total quiz screens viewed</td>
 </tr>
 </tbody></table>
 
