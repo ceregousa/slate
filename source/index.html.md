@@ -17,6 +17,7 @@ includes:
   - assets
   - items
   - errors
+  - iframe messages
 
 search: true
 ---
