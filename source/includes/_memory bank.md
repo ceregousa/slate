@@ -56,7 +56,7 @@ curl https://cerego.com/api/v2/users/:user_id/series/:series_id/items_memory_ban
 }
 ```
 
-This endpoints retrieves the items in the memory bank for a given set/series.
+These endpoints retrieve the items in the memory bank for a given set/series.
 
 ### HTTP Request
 
@@ -101,7 +101,7 @@ curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_ban
     -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
-> The above command returns JSON structured like this:
+> The above commands return JSON structured like this:
 
 ```json
 {
@@ -187,7 +187,7 @@ curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_ban
 }
 ```
 
-This endpoints retrieves the goals in the memory bank for a specified user. (Can be constrained by sets within a given series)
+These endpoints retrieve the goals in the memory bank for a specified user. (Can be constrained by sets within a given series)
 
 ### HTTP Request
 
