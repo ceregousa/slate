@@ -68,7 +68,7 @@ This endpoints retrieves the items in the memory bank for a given set/series.
 
 Attribute | type | Description
 --------- | --------- | -----------
-learning_engine_guid | string | a string id that maps the item to the learning engine model
+learning_engine_guid | string | a guid of the item
 difficulty_bucket | integer | average difficulty of items for the set (between 0 and 3)
 level | float | a value that maps to how long the user will remember the item
 accuracy | integer | ratio of how often the item is answered correctly (between 0 and 1)
