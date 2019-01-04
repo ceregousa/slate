@@ -18,6 +18,7 @@ includes:
   - items
   - errors
   - iframe messages
+  - memory bank
 
 search: true
 ---
