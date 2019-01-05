@@ -1,6 +1,6 @@
 # Memory Bank
 
-<aside class="warning">V2 Memory Bank endpoints will be depricated in January 2019</aside>
+<aside class="warning">V2 Memory Bank endpoints will be deprecated in January 2019</aside>
 
 ## Show Items
 
