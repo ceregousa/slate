@@ -75,7 +75,7 @@ accuracy | integer | ratio of how often the item is answered correctly (between 
 presentations_count | integer | number of times the item has been displayed to a user
 total_study_time_millis | integer | total time the item has been studied (in millis)
 last_study_time | datetime | the last time the item was studied
-see_next_at | datetime | the soonest the user is able to see the item again
+see_next_at | datetime | the optimum time for the user to review the item
 review_interval | integer | the interval in milliseconds required for the items to reach target retention
 current_retention | integer | the probability that the item will be recalled
 easiness_modifier | float | difficulty factor of this set for this user
@@ -206,10 +206,10 @@ image | string | url to the set's icon image
 remixed | boolean | whether the set is remixed or not
 items_count | integer | total number of items in the set
 studied_items_count | integer | number of items that have been studied at least once by the user
-eligible_items_count | integer | number of items that are eligible to study
+eligible_items_count | integer | number of items that have faded and are ready to review
 total_ic_count | integer | total number of instructional items in the set
 seen_ic_count | integer | number of instructional items seen by the user
-presentations_count | integer | number of times the item has been displayed to user
+presentations_count | integer | number of times the set has been displayed to user
 difficulty_bucket | integer | average difficulty of items for the set (between 0 and 3)
 level | float | a value that maps to how long the user will remember all items in the set
 score | float | the level adjusted for unstarted items
@@ -218,10 +218,10 @@ progress | float | progress towards the scoring_goal
 accuracy | float | ratio of how often items are answered correctly (between 0 and 1)
 total_study_time_millis | integer | total amount of time spent studying the set
 last_study_time | datetime | time the item was last studied
-see_next_at | datetime | soonest time the item will be displayed to user again
+see_next_at | datetime | the optimum time for the user to review the set
 due_ats | datetime[] | an array of dates for sets with a due date
 average_review_interval | integer | the interval in milliseconds required for the items to reach target retention
-average_current_retention | integer | the probability that the item will be recalled
+average_current_retention | integer | the probability that the set's items will be recalled
 average_easiness_modifier | integer | difficulty factor of this set for this user
 
 ### Items in level Object
