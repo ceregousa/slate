@@ -117,6 +117,15 @@ curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_ban
       "image" : "https://assets-cerego-com.s3-us-west-2.amazonaws.com/uploads/image/uploader/710474/c15v8h221n9cas.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIP7EH7E47533LFOA%2F20190104%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20190104T192419Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=aaa4f716f0b740b3bc87e31abe78cf4a3273ab3b5573a2c54d2127b7d71a697c",
       "remixed" : false,
       "items_count" : 100,
+      "items_in_level" : {
+         "0" : 0,
+         "1" : 10,
+         "2" : 0,
+         "3" : 0,
+         "4" : 0,
+         "5" : 0,
+         "new" : 8
+      },
       "studied_items_count" : 18,
       "eligible_items_count" : 18,
       "total_ic_count" : 0,
@@ -128,24 +137,15 @@ curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_ban
       "score" : 0.1419,
       "progress" : 0.1419,
       "accuracy" : 0.5176,
-      "total_study_time_millis" : 1900256,
       "last_study_time" : "2018-11-27T06:13:50.000Z",
       "see_next_at" : "2018-11-26T23:00:11.000Z",
       "due_ats" : [
          "2018-12-01T07:59:59.000Z"
       ],
-      "average_current_retention" : 0.0211,
+      "total_study_time_millis" : 1900256,
       "average_review_interval" : 60657181,
-      "average_easiness_modifier" : 0.9019,
-      "items_in_level" : {
-         "0" : 0,
-         "5" : 0,
-         "3" : 0,
-         "new" : 8,
-         "4" : 0,
-         "1" : 10,
-         "2" : 0
-      }
+      "average_current_retention" : 0.0211,
+      "average_easiness_modifier" : 0.9019
     },
     {
       "id": 841345,
@@ -153,6 +153,7 @@ curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_ban
       "module_type": "set",
       "image": "https://assets-cerego-com.s3-us-west-2.amazonaws.com/uploads/image/uploader/1285965/harp.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIP7EH7E47533LFOA%2F20190104%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20190104T014506Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=d651b35ffb2773b02301cbea9cb1c10af3b5c33f27821bf7c099b66a80f9edaf",
       "remixed": false,
+      "items_count": 41,
       "items_in_level": {
         "0": 1,
         "1": 20,
@@ -162,22 +163,21 @@ curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_ban
         "5": 0,
         "new": 18
       },
-      "items_count": 41,
       "studied_items_count": 41,
       "eligible_items_count": 23,
       "total_ic_count": 0,
       "seen_ic_count": 0,
+      "presentations_count": 180,
+      "difficulty_bucket": 1,
+      "scoring_goal": 3,
       "level": 0.8923,
       "score": 0.8923,
       "progress": 0.2974,
-      "scoring_goal": 3,
-      "due_ats": [],
-      "difficulty_bucket": 1,
+      "accuracy": 0.3738,
       "last_study_time": "2019-01-04T01:45:00.000Z",
       "see_next_at": "2018-05-17T15:34:26.000Z",
+      "due_ats": [],
       "total_study_time_millis": 2676337,
-      "accuracy": 0.3738,
-      "presentations_count": 180,
       "average_review_interval": 72220893,
       "average_current_retention": 0.439,
       "average_easiness_modifier": 0.8802
