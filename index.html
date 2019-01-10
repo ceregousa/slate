@@ -333,6 +333,17 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#memory-bank" class="toc-h1 toc-link" data-title="Memory Bank">Memory Bank</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#show-items" class="toc-h2 toc-link" data-title="Show Items">Show Items</a>
+                  </li>
+                  <li>
+                    <a href="#show-goals" class="toc-h2 toc-link" data-title="Show Goals">Show Goals</a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='https://cerego.com/'>Check out the Cerego website</a></li>
@@ -2440,6 +2451,431 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>quizSize</td>
 <td>Number of total quiz screens viewed</td>
+</tr>
+</tbody></table>
+<h1 id='memory-bank'>Memory Bank</h1>
+<aside class="warning">V2 Memory Bank endpoints will be deprecated in late 2019</aside>
+<h2 id='show-items'>Show Items</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v2/users/:user_id/sets/:set_id/items_memory_bank
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v2/users/:user_id/series/:series_id/items_memory_bank
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above commands return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"response"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"learning_engine_guid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"eca5919b-084e-46b8-914e-f0afbc194485"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"difficulty_bucket"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"level"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.7446</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accuracy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presentations_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_study_time_millis"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6697</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_study_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-09T17:21:56.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"see_next_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-10T09:26:21.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"review_interval"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">57865309</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_retention"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"easiness_modifier"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8947</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"learning_engine_guid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ce89723f-8f43-44a6-bc99-6fea96f775eb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"difficulty_bucket"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"level"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.854</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accuracy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presentations_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_study_time_millis"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_study_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-09T17:22:02.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"see_next_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-10T12:27:07.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"review_interval"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">68704872</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_retention"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"easiness_modifier"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8954</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>These endpoints retrieve the items in the memory bank for a given set/series.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v2/users/:user_id/sets/:set_id/items_memory_bank</code></p>
+
+<p><code>GET https://cerego.com/api/v2/users/:user_id/series/:series_id/items_memory_bank</code></p>
+<h3 id='memory-object'>Memory Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>learning_engine_guid</td>
+<td>string</td>
+<td>a guid of the item</td>
+</tr>
+<tr>
+<td>difficulty_bucket</td>
+<td>integer</td>
+<td>average difficulty of the item (between 0 and 3)</td>
+</tr>
+<tr>
+<td>level</td>
+<td>float</td>
+<td>a value that maps to how long the user will remember the item</td>
+</tr>
+<tr>
+<td>accuracy</td>
+<td>integer</td>
+<td>ratio of how often the item is answered correctly (between 0 and 1)</td>
+</tr>
+<tr>
+<td>presentations_count</td>
+<td>integer</td>
+<td>number of times the item has been displayed to user</td>
+</tr>
+<tr>
+<td>total_study_time_millis</td>
+<td>integer</td>
+<td>total time the item has been studied (in millis)</td>
+</tr>
+<tr>
+<td>last_study_time</td>
+<td>datetime</td>
+<td>the last time the item was studied</td>
+</tr>
+<tr>
+<td>see_next_at</td>
+<td>datetime</td>
+<td>the optimum time for the user to review the item</td>
+</tr>
+<tr>
+<td>review_interval</td>
+<td>integer</td>
+<td>the interval in milliseconds required for the items to reach target retention</td>
+</tr>
+<tr>
+<td>current_retention</td>
+<td>integer</td>
+<td>the probability that the item will be recalled</td>
+</tr>
+<tr>
+<td>easiness_modifier</td>
+<td>float</td>
+<td>difficulty factor of this item for the user</td>
+</tr>
+</tbody></table>
+<h3 id='meta'>Meta</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>http response message</td>
+</tr>
+<tr>
+<td>status</td>
+<td>integer</td>
+<td>http response status code</td>
+</tr>
+</tbody></table>
+<h2 id='show-goals'>Show Goals</h2><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v2/users/:user_id/goals_memory_bank
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_bank
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above commands return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">887552</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Read Thai"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"module_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"set"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets-cerego-com.s3-us-west-2.amazonaws.com/uploads/image/uploader/710474/c15v8h221n9cas.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIP7EH7E47533LFOA%2F20190104%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20190104T192419Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=aaa4f716f0b740b3bc87e31abe78cf4a3273ab3b5573a2c54d2127b7d71a697c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remixed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items_in_level"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"0"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"3"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"4"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"5"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"new"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"studied_items_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eligible_items_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_ic_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"seen_ic_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presentations_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">144</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"difficulty_bucket"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scoring_goal"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"level"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.7883</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"score"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.1419</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.1419</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accuracy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.5176</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_study_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-27T06:13:50.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"see_next_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-26T23:00:11.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"due_ats"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"2018-12-01T07:59:59.000Z"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total_study_time_millis"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1900256</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"average_review_interval"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60657181</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"average_current_retention"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.0211</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"average_easiness_modifier"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.9019</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">841345</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ireland's Counties"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"module_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"set"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://assets-cerego-com.s3-us-west-2.amazonaws.com/uploads/image/uploader/1285965/harp.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIP7EH7E47533LFOA%2F20190104%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20190104T014506Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d651b35ffb2773b02301cbea9cb1c10af3b5c33f27821bf7c099b66a80f9edaf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remixed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items_in_level"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"0"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"4"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"5"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"new"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"studied_items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eligible_items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_ic_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"seen_ic_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presentations_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"difficulty_bucket"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scoring_goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8923</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8923</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2974</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3738</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_study_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-04T01:45:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"see_next_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-17T15:34:26.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"due_ats"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"total_study_time_millis"</span><span class="p">:</span><span class="w"> </span><span class="mi">2676337</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"average_review_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">72220893</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"average_current_retention"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.439</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"average_easiness_modifier"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8802</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>These endpoints retrieve the goals in the memory bank for a specified user. (Can be constrained by sets within a given series)</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://cerego.com/api/v2/users/:user_id/goals_memory_bank</code></p>
+
+<p><code>GET https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_bank</code></p>
+<h3 id='memory-object-2'>Memory Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>the id of the set</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>the name of the set</td>
+</tr>
+<tr>
+<td>module_type</td>
+<td>string</td>
+<td>the module type, always a &quot;set&quot; here</td>
+</tr>
+<tr>
+<td>image</td>
+<td>string</td>
+<td>url to the set&#39;s icon image</td>
+</tr>
+<tr>
+<td>remixed</td>
+<td>boolean</td>
+<td>whether the set is remixed or not</td>
+</tr>
+<tr>
+<td>items_count</td>
+<td>integer</td>
+<td>total number of items in the set</td>
+</tr>
+<tr>
+<td>studied_items_count</td>
+<td>integer</td>
+<td>number of items that have been studied at least once by the user</td>
+</tr>
+<tr>
+<td>eligible_items_count</td>
+<td>integer</td>
+<td>number of items that have faded and are ready to review</td>
+</tr>
+<tr>
+<td>total_ic_count</td>
+<td>integer</td>
+<td>total number of instructional items in the set</td>
+</tr>
+<tr>
+<td>seen_ic_count</td>
+<td>integer</td>
+<td>number of instructional items seen by the user</td>
+</tr>
+<tr>
+<td>presentations_count</td>
+<td>integer</td>
+<td>number of times the set has been displayed to user</td>
+</tr>
+<tr>
+<td>difficulty_bucket</td>
+<td>integer</td>
+<td>average difficulty of items for the set (between 0 and 3)</td>
+</tr>
+<tr>
+<td>level</td>
+<td>float</td>
+<td>a value that maps to how long the user will remember all items in the set</td>
+</tr>
+<tr>
+<td>score</td>
+<td>float</td>
+<td>the level adjusted for unstarted items</td>
+</tr>
+<tr>
+<td>scoring_goal</td>
+<td>integer</td>
+<td>the level as a goal determined by the set creator</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>float</td>
+<td>progress towards the scoring_goal</td>
+</tr>
+<tr>
+<td>accuracy</td>
+<td>float</td>
+<td>ratio of how often items are answered correctly (between 0 and 1)</td>
+</tr>
+<tr>
+<td>total_study_time_millis</td>
+<td>integer</td>
+<td>total amount of time spent studying the set</td>
+</tr>
+<tr>
+<td>last_study_time</td>
+<td>datetime</td>
+<td>time the item was last studied</td>
+</tr>
+<tr>
+<td>see_next_at</td>
+<td>datetime</td>
+<td>the optimum time for the user to review the set</td>
+</tr>
+<tr>
+<td>due_ats</td>
+<td>datetime[]</td>
+<td>an array of dates for sets with a due date</td>
+</tr>
+<tr>
+<td>average_review_interval</td>
+<td>integer</td>
+<td>the interval in milliseconds required for the items to reach target retention</td>
+</tr>
+<tr>
+<td>average_current_retention</td>
+<td>integer</td>
+<td>the probability that the set&#39;s items will be recalled</td>
+</tr>
+<tr>
+<td>average_easiness_modifier</td>
+<td>integer</td>
+<td>difficulty factor of this set for this user</td>
+</tr>
+</tbody></table>
+<h3 id='items-in-level-object'>Items in level Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>integer</td>
+<td>number of items with a level &lt; 1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>integer</td>
+<td>number of items with a level &gt;= 1 and &lt; 2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>integer</td>
+<td>number of items with a level &gt;= 2 and &lt; 3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>integer</td>
+<td>number of items with a level &gt;= 3 and &lt; 4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>integer</td>
+<td>number of items with a level &gt;= 4 and &lt; 5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>integer</td>
+<td>number of items with a level &gt;= 5</td>
+</tr>
+<tr>
+<td>new</td>
+<td>integer</td>
+<td>number of items not yet studied</td>
+</tr>
+</tbody></table>
+<h3 id='meta-2'>Meta</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>http response message</td>
+</tr>
+<tr>
+<td>status</td>
+<td>integer</td>
+<td>http response status code</td>
 </tr>
 </tbody></table>
 
