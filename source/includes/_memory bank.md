@@ -1,6 +1,6 @@
 # Memory Bank
 
-<aside class="warning">V2 Memory Bank endpoints will be deprecated in January 2019</aside>
+<aside class="warning">V2 Memory Bank endpoints will be deprecated in late 2019</aside>
 
 ## Show Items
 
@@ -69,16 +69,16 @@ These endpoints retrieve the items in the memory bank for a given set/series.
 Attribute | type | Description
 --------- | --------- | -----------
 learning_engine_guid | string | a guid of the item
-difficulty_bucket | integer | average difficulty of items for the set (between 0 and 3)
+difficulty_bucket | integer | average difficulty of the item (between 0 and 3)
 level | float | a value that maps to how long the user will remember the item
 accuracy | integer | ratio of how often the item is answered correctly (between 0 and 1)
-presentations_count | integer | number of times the item has been displayed to a user
+presentations_count | integer | number of times the item has been displayed to user
 total_study_time_millis | integer | total time the item has been studied (in millis)
 last_study_time | datetime | the last time the item was studied
 see_next_at | datetime | the optimum time for the user to review the item
 review_interval | integer | the interval in milliseconds required for the items to reach target retention
 current_retention | integer | the probability that the item will be recalled
-easiness_modifier | float | difficulty factor of this set for this user
+easiness_modifier | float | difficulty factor of this item for the user
 
 ### Meta
 
