@@ -19,6 +19,7 @@ includes:
   - errors
   - iframe messages
   - memory bank
+  - suggested distractors
 
 search: true
 ---
