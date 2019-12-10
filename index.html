@@ -344,6 +344,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#suggested-distractors" class="toc-h1 toc-link" data-title="Suggested Distractors">Suggested Distractors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#https-request" class="toc-h2 toc-link" data-title="HTTPS Request">HTTPS Request</a>
+                  </li>
+                  <li>
+                    <a href="#query-parameters" class="toc-h2 toc-link" data-title="Query Parameters">Query Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#returned-distractor-objects" class="toc-h2 toc-link" data-title="Returned Distractor Objects">Returned Distractor Objects</a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='https://cerego.com/'>Check out the Cerego website</a></li>
@@ -2876,6 +2890,102 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>status</td>
 <td>integer</td>
 <td>http response status code</td>
+</tr>
+</tbody></table>
+<h1 id='suggested-distractors'>Suggested Distractors</h1><pre class="highlight shell tab-shell"><code>curl https://cerego.com/api/v4/suggested_distractors?question<span class="o">=</span>Mars+is+a+_____+in+our+solar+system.&amp;texts[]<span class="o">=</span>planet
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer &lt;BEARER_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above commands return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"distractors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5128877305160076</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comet"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.44849844472922</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meteoroid"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4226289259750449</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asteroid"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.40354014758008244</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nebula"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3826155365752833</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moon"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.37483423014980904</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"earth"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3670427768325058</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spaceship"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3667323313256961</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"starship"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3226379576151075</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moonlet"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3176745914217421</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"galaxy"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"planet"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suggested-distractors"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves suggested distractors (or, similar words) of <code>texts</code> based on the context of the <code>question</code>.</p>
+<h3 id='https-request'>HTTPS Request</h3>
+<p><code>GET https://cerego.com/api/v4/suggested_distractors?question=Mars+is+a+_____+in+our+solar+system.&amp;texts[]=planet</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>question</td>
+<td>The question context</td>
+</tr>
+<tr>
+<td>texts</td>
+<td>The texts, or correct answers, to distract</td>
+</tr>
+</tbody></table>
+<h3 id='returned-distractor-objects'>Returned Distractor Objects</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>score</td>
+<td>float</td>
+<td>confidence of the distractor&#39;s relevance</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>the name of the distractor</td>
 </tr>
 </tbody></table>
 
