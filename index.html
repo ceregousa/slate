@@ -2951,6 +2951,12 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves suggested distractors (or, similar words) of <code>texts</code> based on the context of the <code>question</code>.</p>
+
+<p>For instance, our question can be:
+<code>Mars is a _____ in our solar system.</code>
+And the answer text can be:
+<code>planet</code>
+Distractors for <code>planet</code> might include <code>meteor</code>, <code>asteroid</code>, etc.</p>
 <h3 id='https-request'>HTTPS Request</h3>
 <p><code>GET https://cerego.com/api/v4/suggested_distractors?question=Mars+is+a+_____+in+our+solar+system.&amp;texts[]=planet</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -2962,11 +2968,11 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 </thead><tbody>
 <tr>
 <td>question</td>
-<td>The question context</td>
+<td>The question to ask the learner</td>
 </tr>
 <tr>
 <td>texts</td>
-<td>The texts, or correct answers, to distract</td>
+<td>The correct answers to the question</td>
 </tr>
 </tbody></table>
 <h3 id='returned-distractor-objects'>Returned Distractor Objects</h3>
