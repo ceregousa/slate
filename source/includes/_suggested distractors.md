@@ -74,7 +74,7 @@ Parameter | Description
 question | The question context
 texts | The texts, or correct answers, to distract
 
-### Distractor Object
+### Returned Distractor Objects
 
 Attribute | type | Description
 --------- | ---- | -----------
