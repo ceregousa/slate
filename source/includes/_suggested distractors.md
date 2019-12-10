@@ -63,6 +63,12 @@ curl https://cerego.com/api/v4/suggested_distractors?question=Mars+is+a+_____+in
 
 This endpoint retrieves suggested distractors (or, similar words) of `texts` based on the context of the `question`.
 
+For instance, our question can be:
+`Mars is a _____ in our solar system.`
+And the answer text can be:
+`planet`
+Distractors for `planet` might include `meteor`, `asteroid`, etc.
+
 ### HTTPS Request
 
 `GET https://cerego.com/api/v4/suggested_distractors?question=Mars+is+a+_____+in+our+solar+system.&texts[]=planet`
@@ -71,8 +77,8 @@ This endpoint retrieves suggested distractors (or, similar words) of `texts` bas
 
 Parameter | Description
 --------- | -----------
-question | The question context
-texts | The texts, or correct answers, to distract
+question | The question to ask the learner
+texts | The correct answers to the question
 
 ### Returned Distractor Objects
 
