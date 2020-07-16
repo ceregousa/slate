@@ -4,7 +4,6 @@
 
 ```shell
 curl https://partners.cerego.com/v3/my/profile
-    -H "Content-Type: application/json"
     -H "Authorization: Bearer <BEARER_TOKEN>"
 ```
 
