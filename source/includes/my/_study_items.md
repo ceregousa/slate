@@ -5,7 +5,7 @@
 ```shell
 curl https://cerego.com/api/v3/my/study_items
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:

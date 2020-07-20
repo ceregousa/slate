@@ -4,7 +4,7 @@
 
 ```shell
 curl https://partners.cerego.com/v3/my/profile
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 

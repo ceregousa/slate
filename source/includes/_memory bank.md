@@ -7,13 +7,13 @@
 ```shell
 curl https://cerego.com/api/v2/users/:user_id/sets/:set_id/items_memory_bank
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 ```shell
 curl https://cerego.com/api/v2/users/:user_id/series/:series_id/items_memory_bank
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above commands return JSON structured like this:
@@ -92,13 +92,13 @@ status | integer | http response status code
 ```shell
 curl https://cerego.com/api/v2/users/:user_id/goals_memory_bank
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 ```shell
 curl https://cerego.com/api/v2/users/:user_id/series/:series_id/goals_memory_bank
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above commands return JSON structured like this:

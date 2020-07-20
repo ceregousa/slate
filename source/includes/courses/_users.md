@@ -5,7 +5,7 @@
 ```shell
 curl https://partners.cerego.com/v3/courses/:id/users
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:
@@ -97,7 +97,7 @@ curl https://partners.cerego.com/v3/courses/:id/users
     -d '{"email": "developers@cerego.com", "name": "Sarah Gough"}'
     -X POST
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -163,7 +163,7 @@ name | string | no | The name of the user you wish to add
 ```shell
 curl https://partners.cerego.com/v3/courses/:id/users/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your GET request you should receive a response that looks like this:
@@ -218,7 +218,7 @@ This endpoint gets information about a user within a course
 curl https://partners.cerego.com/v3/courses/:id/users/:id
     -X DELETE
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content
