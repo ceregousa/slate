@@ -3,7 +3,7 @@
 > To test your connection to our API please use
 
 ```shell
-curl https://partners.cerego.com/v3/my/profile
+curl https://partners.cerego.com/v3/my/profile \
     -H "Authorization: Bearer <API_KEY>"
 ```
 
