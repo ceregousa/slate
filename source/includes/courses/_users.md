@@ -3,9 +3,9 @@
 ## Get all users in a course
 
 ```shell
-curl https://cerego.com/api/v3/courses/:id/users
+curl https://partners.cerego.com/v3/courses/:id/users
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:
@@ -62,7 +62,7 @@ This endpoint retrieves all users that are connected to a specific course.
 
 ### HTTP Request
 
-`GET https://cerego.com/api/v3/courses/:id/users`
+`GET https://partners.cerego.com/v3/courses/:id/users`
 
 ### User Object
 
@@ -93,11 +93,11 @@ cost | integer | Cost in cents to enable this course
 ## Add a user to a course
 
 ```shell
-curl https://cerego.com/api/v3/courses/:id/users
+curl https://partners.cerego.com/v3/courses/:id/users
     -d '{"email": "developers@cerego.com", "name": "Sarah Gough"}'
     -X POST
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -144,7 +144,7 @@ This endpoint adds a user to a course (or creates a new user if one does not exi
 
 ### HTTP Request
 
-`POST https://cerego.com/api/v3/courses/:id/users`
+`POST https://partners.cerego.com/v3/courses/:id/users`
 
 ### Request Parameters
 
@@ -161,9 +161,9 @@ name | string | no | The name of the user you wish to add
 ## Get a user in a course
 
 ```shell
-curl https://cerego.com/api/v3/courses/:id/users/:id
+curl https://partners.cerego.com/v3/courses/:id/users/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your GET request you should receive a response that looks like this:
@@ -210,15 +210,15 @@ This endpoint gets information about a user within a course
 
 ### HTTP Request
 
-`GET https://cerego.com/api/v3/courses/:id/users/:id`
+`GET https://partners.cerego.com/v3/courses/:id/users/:id`
 
 ## Remove a user from a course
 
 ```shell
-curl https://cerego.com/api/v3/courses/:id/users/:id
+curl https://partners.cerego.com/v3/courses/:id/users/:id
     -X DELETE
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content
@@ -227,7 +227,7 @@ This endpoint deletes a user from a course
 
 ### HTTP Request
 
-`DELETE https://cerego.com/api/v3/courses/:id/users/:id`
+`DELETE https://partners.cerego.com/v3/courses/:id/users/:id`
 
 <aside class="notice">Removing a user does NOT clear their memories or progress.</aside>
 

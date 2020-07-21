@@ -3,7 +3,7 @@
 ```shell
 curl https://cerego.com/api/v4/suggested_distractors?question=Mars+is+a+_____+in+our+solar+system.&texts[]=planet
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above commands return JSON structured like this:

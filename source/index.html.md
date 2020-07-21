@@ -6,20 +6,12 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://cerego.com/'>Check out the Cerego website</a>
-  - <a href='https://cerego.com/api/v3/my/oauth2_access_tokens'>Get your Bearer token.</a>
-
+  - <a href='https://cerego.com/app/nav/partners/api_users'>Get your API Key</a>
 includes:
   - introduction
   - authentication
-  - courses
   - courses/users
-  - my/study_items
-  - assets
-  - items
   - errors
-  - iframe messages
-  - memory bank
-  - suggested distractors
 
 search: true
 ---

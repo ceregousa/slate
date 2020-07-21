@@ -5,7 +5,7 @@
 ```shell
 curl https://cerego.com/api/v3/sets/:id/items
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:
@@ -103,7 +103,7 @@ attached_items | items | application_questions, question_and_answers | Array of 
 ```shell
 curl https://cerego.com/api/v3/items/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:
@@ -154,7 +154,7 @@ curl https://cerego.com/api/v3/sets/:id/items
     -d '{"data":{"attributes":{"position":1}}}'
     -X POST
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:
@@ -203,7 +203,7 @@ curl https://cerego.com/api/v3/items/:id
     -d '{ "id":3205069, "type":"items","attributes":{ "created-at":"2018-08-21T21:54:20.000Z","study-type":"study","note-type":"item","note-tab-text":null,"explanation-type":null,"is-studiable":false},"relationships":{"facets":{"data":[]},"annotations":{"data":[]},"sentences":{"data":[]}},"links":{"self":"/v3/items/3205069"},"selected":true,"expanded":true,"errors":["missing_template"],"cardState":"no_template","card":{},"data":{"attributes":{"template-type":"associations"}}}'
     -X PUT
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 ```json
@@ -251,7 +251,7 @@ This endpoint updates one item.
 curl https://cerego.com/api/v3/items/:id
     -X DELETE
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content
@@ -269,7 +269,7 @@ curl https://cerego.com/api/v3/items/:id/clone
     -d '{"data":{"attributes":{"target-set-id":123456,"position":2}}}'
     -X POST
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:

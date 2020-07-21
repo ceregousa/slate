@@ -5,7 +5,7 @@
 ```shell
 curl https://cerego.com/api/v3/courses
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:
@@ -202,7 +202,7 @@ cost | integer | Cost in cents to enable the course
 ```shell
 curl https://cerego.com/api/v3/courses/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > The above command returns JSON structured like this:
@@ -294,7 +294,7 @@ curl https://cerego.com/api/v3/courses
     -d '{"name": "How To Achieve World Domination", "description": "The is pleasant course for those interested in conquering all life all on earth.", "partner_id": 21, "slug": "how-to-achieve-world-domination"}'
     -X POST
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -383,7 +383,7 @@ curl https://cerego.com/api/v3/courses/:id
     -d '{"name": "27 Title You Should not Use In API Documentation", "description": "A comprehensive list of every absurd title you can use for examples in your API documentation.", "slug": "27-titles-you-shouldnt-use-in-api-documentation", "state": "published"}'
     -X PUT
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your POST request you should receive a response that looks like this:
@@ -471,7 +471,7 @@ slug | string | The slug for the course
 curl https://cerego.com/api/v3/courses/:id
     -X DELETE
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your DELETE request you should receive a 204 No Content

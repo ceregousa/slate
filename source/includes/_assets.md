@@ -5,7 +5,7 @@
 ```shell
 curl https://cerego.com/api/v3/images/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 ```json
@@ -54,7 +54,7 @@ Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded d
 ### Via URL (using a miltipart form)
 ```shell
 curl 'https://cerego.com/api/v3/images' 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'
   -H 'accept: application/json'
   --data-binary $'------WebKitFormBoundaryMVLbHo8cqv4TIsAb\r\nContent-Disposition: form-data; name="url"\r\n\r\nhttps://www.example.com/file.png\r\n------WebKitFormBoundaryMVLbHo8cqv4TIsAb--\r\n'
@@ -64,7 +64,7 @@ curl 'https://cerego.com/api/v3/images'
 ```shell
 curl 'https://cerego.com/api/v3/images' 
   -X POST 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: application/json'
   -H 'accept: application/json'
   -d '{"url":"https://www.example.com/file.png"}'
@@ -74,7 +74,7 @@ curl 'https://cerego.com/api/v3/images'
 
 ```shell
 curl 'https://cerego.com/api/v3/images'
-   -H 'Authorization: Bearer <BEARER_TOKEN>' 
+   -H 'Authorization: Bearer <API_KEY>' 
    -H 'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'
    -H 'accept: application/json' 
    --data-binary $'------WebKitFormBoundaryru7KOTWamg3KC9gw\r\nContent-Disposition: form-data; name="file"; filename="file.JPG"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundaryru7KOTWamg3KC9gw--\r\n'
@@ -86,7 +86,7 @@ curl 'https://cerego.com/api/v3/images'
 ```shell
 curl 'https://cerego.com/api/v3/images' 
   -X POST 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: image/jpeg'
   -H 'accept: application/json'
   -d '{"data":"<base64 encoded image>"}'
@@ -149,7 +149,7 @@ curl 'https://cerego.com/api/v3/images'
 ```shell
 curl https://cerego.com/api/v3/sounds/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 ```json
@@ -192,7 +192,7 @@ Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded d
 ### Via URL (using a miltipart form)
 ```shell
 curl 'https://cerego.com/api/v3/sounds' 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'
   -H 'accept: application/json'
   --data-binary $'------WebKitFormBoundaryMVLbHo8cqv4TIsAb\r\nContent-Disposition: form-data; name="url"\r\n\r\nhttps://www.example.com/file.mp3\r\n------WebKitFormBoundaryMVLbHo8cqv4TIsAb--\r\n'
@@ -202,7 +202,7 @@ curl 'https://cerego.com/api/v3/sounds'
 ```shell
 curl 'https://cerego.com/api/v3/sounds' 
   -X POST 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: application/json'
   -H 'accept: application/json'
   -d '{"url":"https://www.example.com/file.mp3"}'
@@ -212,7 +212,7 @@ curl 'https://cerego.com/api/v3/sounds'
 
 ```shell
 curl 'https://cerego.com/api/v3/sounds'
-   -H 'Authorization: Bearer <BEARER_TOKEN>' 
+   -H 'Authorization: Bearer <API_KEY>' 
    -H 'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'
    -H 'accept: application/json' 
    --data-binary $'------WebKitFormBoundaryru7KOTWamg3KC9gw\r\nContent-Disposition: form-data; name="file"; filename="file.JPG"\r\nContent-Type: audio/mp3\r\n\r\n\r\n------WebKitFormBoundaryru7KOTWamg3KC9gw--\r\n'
@@ -224,7 +224,7 @@ curl 'https://cerego.com/api/v3/sounds'
 ```shell
 curl 'https://cerego.com/api/v3/sounds' 
   -X POST 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: audio/mp3'
   -H 'accept: application/json'
   -d '{"data":"<base64 encoded sound>"}'
@@ -289,7 +289,7 @@ curl 'https://cerego.com/api/v3/sounds'
 ```shell
 curl https://cerego.com/api/v3/documents/:id
     -H "Content-Type: application/json"
-    -H "Authorization: Bearer <BEARER_TOKEN>"
+    -H "Authorization: Bearer <API_KEY>"
 ```
 
 ```json
@@ -333,7 +333,7 @@ Cerego supports 3 ways of uploading an asset: via URL, File, or base64 encoded d
 ### Via URL (using a miltipart form)
 ```shell
 curl 'https://cerego.com/api/v3/documents' 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundaryMVLbHo8cqv4TIsAb'
   -H 'accept: application/json'
   --data-binary $'------WebKitFormBoundaryMVLbHo8cqv4TIsAb\r\nContent-Disposition: form-data; name="url"\r\n\r\nhttps://www.example.com/file.pdf\r\n------WebKitFormBoundaryMVLbHo8cqv4TIsAb--\r\n'
@@ -343,7 +343,7 @@ curl 'https://cerego.com/api/v3/documents'
 ```shell
 curl 'https://cerego.com/api/v3/documents' 
   -X POST 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: application/json'
   -H 'accept: application/json'
   -d '{"url":"https://www.example.com/file.pdf"}'
@@ -353,7 +353,7 @@ curl 'https://cerego.com/api/v3/documents'
 
 ```shell
 curl 'https://cerego.com/api/v3/documents'
-   -H 'Authorization: Bearer <BEARER_TOKEN>' 
+   -H 'Authorization: Bearer <API_KEY>' 
    -H 'content-type: multipart/form-data; boundary=------WebKitFormBoundaryru7KOTWamg3KC9gw'
    -H 'accept: application/json' 
    --data-binary $'------WebKitFormBoundaryru7KOTWamg3KC9gw\r\nContent-Disposition: form-data; name="file"; filename="file.JPG"\r\nContent-Type: application/pdf\r\n\r\n\r\n------WebKitFormBoundaryru7KOTWamg3KC9gw--\r\n'
@@ -365,7 +365,7 @@ curl 'https://cerego.com/api/v3/documents'
 ```shell
 curl 'https://cerego.com/api/v3/documents' 
   -X POST 
-  -H 'authorization: Bearer <BEARER_TOKEN>' 
+  -H 'authorization: Bearer <API_KEY>' 
   -H 'content-type: application/pdf'
   -H 'accept: application/json'
   -d '{"data":"<base64 encoded document>"}'
