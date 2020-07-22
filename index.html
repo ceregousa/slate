@@ -258,7 +258,7 @@
 <blockquote>
 <p>To test your connection to our API please use</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/my/profile
+<pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/my/profile <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer &lt;API_KEY&gt;"</span>
 </code></pre>
 <p>Welcome to the Cerego API! You can use our API to access Cerego endpoints, which you can use to manage the users in your courses.</p>
@@ -280,8 +280,8 @@
 <aside class="notice">
 You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBjagLxyh6U</code> with your API key.
 </aside>
-<h1 id='users'>Users</h1><h2 id='get-all-users-in-a-course'>Get all users in a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users
-    -H <span class="s2">"Content-Type: application/json"</span>
+<h1 id='users'>Users</h1><h2 id='get-all-users-in-a-course'>Get all users in a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer &lt;API_KEY&gt;"</span>
 </code></pre>
 <blockquote>
@@ -429,10 +429,10 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <td>Cost in cents to enable this course</td>
 </tr>
 </tbody></table>
-<h2 id='add-a-user-to-a-course'>Add a user to a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users
-    -d <span class="s1">'{"email": "developers@cerego.com", "name": "Sarah Gough"}'</span>
-    -X POST
-    -H <span class="s2">"Content-Type: application/json"</span>
+<h2 id='add-a-user-to-a-course'>Add a user to a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users <span class="se">\</span>
+    -d <span class="s1">'{"email": "developers@cerego.com", "name": "Sarah Gough"}'</span> <span class="se">\</span>
+    -X POST <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer &lt;API_KEY&gt;"</span>
 </code></pre>
 <blockquote>
@@ -503,8 +503,8 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <aside class="notice">If an account doesn't already exist, we will send them a welcome email with a link and instructions to set a password.</aside>
 
 <aside class="warning">This endpoint is idempotent. (A user will not be added again if they are already in the course)</aside>
-<h2 id='get-a-user-in-a-course'>Get a user in a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users/:id
-    -H <span class="s2">"Content-Type: application/json"</span>
+<h2 id='get-a-user-in-a-course'>Get a user in a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users/:id <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer &lt;API_KEY&gt;"</span>
 </code></pre>
 <blockquote>
@@ -549,9 +549,9 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <p>This endpoint gets information about a user within a course</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://partners.cerego.com/v3/courses/:id/users/:id</code></p>
-<h2 id='remove-a-user-from-a-course'>Remove a user from a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users/:id
-    -X DELETE
-    -H <span class="s2">"Content-Type: application/json"</span>
+<h2 id='remove-a-user-from-a-course'>Remove a user from a course</h2><pre class="highlight shell tab-shell"><code>curl https://partners.cerego.com/v3/courses/:id/users/:id <span class="se">\</span>
+    -X DELETE <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer &lt;API_KEY&gt;"</span>
 </code></pre>
 <blockquote>
