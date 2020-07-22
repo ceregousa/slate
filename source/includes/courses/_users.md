@@ -3,8 +3,8 @@
 ## Get all users in a course
 
 ```shell
-curl https://partners.cerego.com/v3/courses/:id/users
-    -H "Content-Type: application/json"
+curl https://partners.cerego.com/v3/courses/:id/users \
+    -H "Content-Type: application/json" \
     -H "Authorization: Bearer <API_KEY>"
 ```
 
@@ -93,10 +93,10 @@ cost | integer | Cost in cents to enable this course
 ## Add a user to a course
 
 ```shell
-curl https://partners.cerego.com/v3/courses/:id/users
-    -d '{"email": "developers@cerego.com", "name": "Sarah Gough"}'
-    -X POST
-    -H "Content-Type: application/json"
+curl https://partners.cerego.com/v3/courses/:id/users \
+    -d '{"email": "developers@cerego.com", "name": "Sarah Gough"}' \
+    -X POST \
+    -H "Content-Type: application/json" \
     -H "Authorization: Bearer <API_KEY>"
 ```
 
@@ -161,8 +161,8 @@ name | string | no | The name of the user you wish to add
 ## Get a user in a course
 
 ```shell
-curl https://partners.cerego.com/v3/courses/:id/users/:id
-    -H "Content-Type: application/json"
+curl https://partners.cerego.com/v3/courses/:id/users/:id \
+    -H "Content-Type: application/json" \
     -H "Authorization: Bearer <API_KEY>"
 ```
 
@@ -215,9 +215,9 @@ This endpoint gets information about a user within a course
 ## Remove a user from a course
 
 ```shell
-curl https://partners.cerego.com/v3/courses/:id/users/:id
-    -X DELETE
-    -H "Content-Type: application/json"
+curl https://partners.cerego.com/v3/courses/:id/users/:id \
+    -X DELETE \
+    -H "Content-Type: application/json" \
     -H "Authorization: Bearer <API_KEY>"
 ```
 
