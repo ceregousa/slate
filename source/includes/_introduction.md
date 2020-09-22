@@ -11,7 +11,7 @@ curl https://partners.cerego.com/v3/my/profile \
 
 Welcome to the Cerego API! You can use our API to access Cerego endpoints, which you can use to manage the users in your courses.
 
-Our API follows the [JSON API](http://jsonapi.org/) standard. Please take note how objects within a certain resource are in the `includes` section.
+Our API follows the [JSON API](http://jsonapi.org/) standard. Please take note how objects within a certain resource are in the `included` section.
 
 All endpoints will start with the following URL and follow standard RESTful practices.
 
