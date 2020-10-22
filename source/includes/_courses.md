@@ -155,10 +155,10 @@ This endpoint retrieves courses in a partner.
 Parameter | Description
 --------- | -----------
 filter[partner_id] | Required. Scopes the courses returned to the partner specified.
-page[number] | Courses are paginated, use this to choose which page you want
+user_id | Specify a user id to get the courses that the user is enrolled in as a student. Defaults to the currently signed in user
+include_department_courses | If specified, courses in departments of `partner_id` that the user is enrolled in will also be returned
 sort | Orders the results based on the param. <br>Example: `name` - sort in alphabetical order
-user_id | Specify a user id to get the courses that the user is enrolled in as a student
-include_department_courses | If specified, courses in departments of `partner_id` will also be returned
+page[number] | Courses are paginated, use this to choose which page you want
 
 
 ### Course Object
