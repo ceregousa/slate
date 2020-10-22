@@ -184,8 +184,7 @@ external-id | integer | The LTI user associated with the course
 
 Attribute | type | Description
 --------- | --------- | -----------
-settings | object | `daily-new-assignments` boolean - Will receive notifications when new assignments become published<br>`signup-nudges` boolean - Will receive steps and advice on getting you set up<br>`daily-new-students` boolean - Will receive notifications about new students joining your courses<br>`daily-goals-reached` boolean - Will receive notifications when students reach an assigned goal<br>`weekly-stale-invitations` boolean - Will receive weekly summary of students who haven't confirmed their invitation
-role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` Can edit: some content (only assigned sets and series)<br>`content_manager` Can manage (add/delete/edit): all content (sets and series)<br>`course_manager` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments<br>`admin` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments + organization level features and users
+role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course
 can-edit | boolean | Determines if you are allowed to edit this content
 progress | float | Your progress on this specific course (`0.0` is unstarted, `1.0` is complete)
 percent-started | float | The percentage of concepts you have started (`0.0` to `1.0`)
