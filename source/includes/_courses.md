@@ -172,9 +172,7 @@ slug | string | Unique name for the course
 users-count | integer | The number of users in the course
 admin-users-count | integer | The number of admins (instructors) in the course
 student-users-count | integer | The number of students in the course
-goal-list-count | integer | The number of series in the course
 goals-count | integer | The number of sets in the course
-reports-count | integer | The number of reports a set has
 state | string | `published` Course is viewable <br> `unpublished` Course is hidden <br> `archived` Course is no longer in use
 state-updated-at | datetime | The most recent time that state was changed
 instructor-names | array[string] | A list of instructor names for the course
