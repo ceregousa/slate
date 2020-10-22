@@ -231,3 +231,75 @@ This endpoint deletes a user from a course
 
 <aside class="notice">Removing a user does NOT clear their memories or progress.</aside>
 
+## Get users in a partner
+
+This endpoint retrieves users in a partner.
+
+
+```shell
+curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member_id \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <API_KEY>"
+```
+
+> If you successfully make your GET request you should receive a response that looks like this:
+
+``` json
+{
+    "data": [
+        {
+            "id": "1234567",
+            "type": "users",
+            "attributes": {
+                "created-at": "2020-10-16T00:24:54.000Z",
+                "name": "name",
+                "username": "username",
+                "email": null,
+                "last-logged-in-at": null,
+                "guid": "f105f8e0-122b-479d-98c7-97as65869de7a",
+                "has-password": false
+            },
+            "relationships": {
+                "image": {
+                    "data": null
+                },
+                "emails": {
+                    "data": []
+                },
+                "user-partner-id": {
+                  "data": null
+                },
+                "partner-user-tags": {
+                    "data": []
+                }
+            },
+            "meta": {
+                "role": null,
+                "can-edit-partner": false,
+                "can-create-course": false,
+                "can-edit-course": false,
+                "can-create-content": false,
+                "can-manage-content": false,
+                "can-read-content": false,
+                "can-edit-content": false,
+                "can-manage-learners": false
+            }
+        }
+    ],
+    "meta": {
+        "total-pages": 1,
+        "total-count": 1
+    }
+}
+```
+
+### HTTP Request
+
+`GET https://partners.cerego.com/v3/partners/:partner_id/users`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+query | Specify a query if you are looking for a single user. The value should be either the member_id or email of the user.
+page[number] | Results are paginated, use this to choose which page you want
