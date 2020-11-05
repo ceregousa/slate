@@ -150,7 +150,8 @@ This endpoint adds a user to a course (or creates a new user if one does not exi
 
 Parameter | Type | Required? | Description
 --------- | --------- | --------- | -----------
-email | string | yes | The email of the user you wish to add to the course
+email | string | no | The email of the user you wish to add to the course. Required unless you specify member_id.
+member_id | string | no | The member ID of the user you wish to add to the course. A member ID is a unique and unchanging identifier for the user that you have, for example an employee ID.  If you specify this, then you must also specify name, and not specify email.
 name | string | no | The name of the user you wish to add
 
 
