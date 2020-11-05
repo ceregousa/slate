@@ -793,8 +793,14 @@ You must replace <code>cDPuiaEQrttyDpGU8a1aJtltFUDJY9W31Hi/K+SY9c2WuqHio3dBVtBja
 <tr>
 <td>email</td>
 <td>string</td>
-<td>yes</td>
-<td>The email of the user you wish to add to the course</td>
+<td>no</td>
+<td>The email of the user you wish to add to the course. Required unless you specify member_id.</td>
+</tr>
+<tr>
+<td>member_id</td>
+<td>string</td>
+<td>no</td>
+<td>The member ID of the user you wish to add to the course. A member ID is a unique and unchanging identifier for the user that you have, for example an employee ID.  If you specify this, then you must also specify name, and not specify email.</td>
 </tr>
 <tr>
 <td>name</td>
