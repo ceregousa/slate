@@ -12,6 +12,7 @@ includes:
   - authentication
   - courses
   - courses/users
+  - user_tags
   - errors
 
 search: true
