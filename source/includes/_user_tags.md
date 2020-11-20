@@ -57,7 +57,7 @@ Parameter | Type | Required? | Description
 user_id | string | yes | The ID of the user
 value | string | yes | The value of the tag
 
-<aside class="warning">This endpoint will create a tag for a user for a tag type only if the user doesn't have a tag for that tag type yet. This endpoint can't be used to update tag values.</aside>
+<aside class="warning">This endpoint will create a tag for a user only if the user doesn't have a tag for that tag type yet. This endpoint can't be used to update tag values.</aside>
 
 ## Update a user's tag
 
