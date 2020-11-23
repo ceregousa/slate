@@ -1,118 +1,38 @@
 # User Tags
 
-## Add a tag to a user
+## About user tags
+
+User tags can be used to assign custom tag values to a user. Smart Groups can then use these tags to automatically enroll users into courses based on the tag values. 
+
+For example, you might set up a "Country" tag type for your account and then for each user set it to their country of residence. Then you could set up smart groups to automatically enroll users in the United States in one course, and users in Canada in a different course.  
+
+## Set a user's tags
 
 ```shell
-curl https://partners.cerego.com/v3/partner_user_tag_types/:tag_type_id/partner_user_tags \
-    -d '{"user_id": "1185304", "value": "The value of the tag"}' \
+curl https://partners.cerego.com/v3/users/:userid/partner_user_tags \
+    -d '{ 
+          "tags": [{"partner_user_tag_type_id": "5", "value": "California"}, 
+                   {"partner_user_tag_type_id": "9", "value": "Marketing"}] 
+        }' \
     -X POST \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer <API_KEY>"
 ```
 
-> If you successfully make your POST request you should receive a response that looks like this:
 
-```json
-{
-  "data": {
-    "id": "84918",
-    "type": "partner-user-tags",
-    "attributes": {
-      "value": "The value of the tag",
-      "created-at": "2020-11-19T00:14:19.000Z",
-      "updated-at": "2020-11-19T00:14:19.000Z"
-    },
-    "relationships": {
-      "user": {
-        "data": {
-          "id": "1185304",
-          "type": "users"
-        }
-      },
-      "partner-user-tag-type": {
-        "data": {
-          "id": "3",
-          "type": "partner-user-tag-types"
-        }
-      }
-    }
-  },
-  "meta": {
-    "total-pages": null,
-    "total-count": null
-  }
-}
-```
+This endpoint allows you to set tag values for a user. When using this you specify an array of objects, each object having a `partner_user_tag_type_id` and a `value` that should be set for that tag type. 
 
-This endpoint adds a tag to a user. When using this, you specify the tag_type_id and the value to set. Tag types must be set up for your account ahead of time. Contact your customer support representative to know the ids for your account's tag types.   
+Tag types must be set up for your account ahead of time. Contact your customer support representative to know the ids for your account's tag types.   
 
 ### HTTP Request
 
-`POST https://partners.cerego.com/v3/partner_user_tag_types/:tag_type_id/partner_user_tags`
+`POST https://partners.cerego.com/v3/users/:userid/partner_user_tags`
 
 ### Request Parameters
 
 Parameter | Type | Required? | Description
 --------- | --------- | --------- | -----------
-user_id | string | yes | The ID of the user
-value | string | yes | The value of the tag
-
-<aside class="warning">This endpoint will create a tag for a user only if the user doesn't have a tag for that tag type yet. This endpoint can't be used to update tag values.</aside>
-
-## Update a user's tag
-
-```shell
-curl https://partners.cerego.com/v3/partner_user_tags/:id \
-    -d '{"value": "The value of the tag"}' \
-    -X PUT \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer <API_KEY>"
-```
-
-> If you successfully make your PUT request you should receive a response that looks like this:
-
-```json
-{
-  "data": {
-    "id": "84918",
-    "type": "partner-user-tags",
-    "attributes": {
-      "value": "The value of the tag",
-      "created-at": "2020-11-19T00:14:19.000Z",
-      "updated-at": "2020-11-19T00:14:19.000Z"
-    },
-    "relationships": {
-      "user": {
-        "data": {
-          "id": "1185304",
-          "type": "users"
-        }
-      },
-      "partner-user-tag-type": {
-        "data": {
-          "id": "3",
-          "type": "partner-user-tag-types"
-        }
-      }
-    }
-  },
-  "meta": {
-    "total-pages": null,
-    "total-count": null
-  }
-}
-```
-
-This endpoint updates a user's tag
-
-### HTTP Request
-
-`PUT https://partners.cerego.com/v3/partner_user_tags/:id`
+tags | array | yes | An array of objects. Each object should have a `partner_user_tag_type_id` and a `value`. For example, if your account has a tag type of "Country" which has an ID of "12" and also a tag type of "Employee ID" which has an ID of "13" then you could set both of them with: <br> [{"partner_user_tag_type_id": "12", "value": "United States"}, {"partner_user_tag_type_id": "13", "value": "B893247"}] 
 
 
-### Request Parameters
-
-Parameter | Type | Required? | Description
---------- | --------- | --------- | -----------
-value | string | yes | The value of the tag
-
+ 
