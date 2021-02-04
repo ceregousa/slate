@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - introduction
   - authentication
+  - assignments
   - courses
   - courses/users
   - user_tags
