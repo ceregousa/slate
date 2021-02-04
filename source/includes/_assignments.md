@@ -151,7 +151,6 @@ This endpoint retrieves the assignments in a course.
 | ------------------------- | -------- | ----------------------------------------------------------------------- |
 | assessment-score          | float    | The user's score on this assessment (`0.0` is 0%, `1.0` is 100%)        |
 | memory-aggregate.progress | float    | The progress on this assignment (`0.0` is unstarted, `1.0` is complete) |
-| percent-started           | float    | The percentage of concepts that have been started (`0.0` to `1.0`)      |
 | last-study-time           | datetime | The time which the user last studied this assignment                    |
 
 <!-- | assignment-available | boolean  | Returns true if the user is able to study/take the assignment. Could be false for a student if the assignment isn't published yet or if the student hasn't completed a prerequisite | -->
