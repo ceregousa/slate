@@ -147,10 +147,12 @@ This endpoint retrieves the assignments in a course.
 
 ### - Meta
 
-| Attribute                        | type     | Description                                                             |
-| -------------------------------- | -------- | ----------------------------------------------------------------------- |
-| assessment-score                 | float    | The user's score on this assessment (`0.0` is 0%, `1.0` is 100%)        |
-| memory-aggregate.progress        | float    | The progress on this assignment (`0.0` is unstarted, `1.0` is complete) |
-| memory-aggregate.last-study-time | datetime | The time which the user last studied this assignment                    |
-
-<!-- | assignment-available | boolean  | Returns true if the user is able to study/take the assignment. Could be false for a student if the assignment isn't published yet or if the student hasn't completed a prerequisite | -->
+| Attribute                        | type     | Description                                                                                                                                                                                                       |
+| -------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| assessment-score                 | float    | The user's score on this assessment (`0.0` is 0%, `1.0` is 100%)                                                                                                                                                  |
+| memory-aggregate.last-study-time | datetime | The time which the user last studied this assignment                                                                                                                                                              |
+| memory-aggregate.progress        | float    | The progress on this assignment (`0.0` is unstarted, `1.0` is complete)                                                                                                                                           |
+| memory-aggregate.score           | float    | This is the "set level" the user has reached on the assignment                                                                                                                                                    |
+| prereq-assignment-id             | int      | The id of the assignment that is a prerequisite to this assignment                                                                                                                                                |
+| prereq-type                      | int      | The type of prerequisite. Currently 'Level' is the only valid value. This means for the user to access this assignment, the prereq-assignment's `memory-aggregate.score` must be greater or equal to prereq-value |
+| prereq-value                     | int      | The value needed to be achieved to pass the prerequisite.                                                                                                                                                         |
