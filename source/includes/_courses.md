@@ -140,7 +140,7 @@ curl https://partners.cerego.com/v3/courses
 }
 ```
 
-This endpoint retrieves courses in a partner.
+This endpoint retrieves courses in a partner. By default it returns courses in the partner that the user is enrolled in as a student.
 
 ### HTTP Request
 
