@@ -303,4 +303,5 @@ curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member
 Parameter | Description
 --------- | -----------
 query | Specify a query if you are looking for a single user. The value should be either the member_id or email of the user.
+include_department_users | If specified, users in departments of the partner will also be included.
 page[number] | Results are paginated, use this to choose which page you want
