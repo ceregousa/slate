@@ -289,6 +289,7 @@ curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member
                                 "last-study-time": null,
                                 "score": 0.0
                             }
+                        ]
                     }
                 ]
             },
