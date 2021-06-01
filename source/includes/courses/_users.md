@@ -238,7 +238,7 @@ This endpoint retrieves users in a partner.
 
 
 ```shell
-curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member_id \
+curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member_id&include_enrolled_courses=true \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer <API_KEY>"
 ```
@@ -258,7 +258,39 @@ curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member
                 "email": null,
                 "last-logged-in-at": null,
                 "guid": "f105f8e0-122b-479d-98c7-97as65869de7a",
-                "has-password": false
+                "has-password": false,
+                "course-stats": [
+                    {
+                        "id": 4639,
+                        "title": "Useful References",
+                        "progress": 0.0,
+                        "total-study-time-millis": 0,
+                        "last-study-time": null,
+                        "assignments-data": []
+                    },
+                    {
+                        "id": 10175,
+                        "title": "Sales Demo",
+                        "progress": 0.0,
+                        "total-study-time-millis": 0,
+                        "last-study-time": null,
+                        "assignments-data": [
+                            {
+                                "id": 762921,
+                                "name": "CHAPTER 1: The Scientific Study of Life",
+                                "total-study-time-millis": 0,
+                                "last-study-time": null,
+                                "score": 0.0
+                            },
+                            {
+                                "id": 762925,
+                                "name": "UNIT 1: The Cellular Basis of Life",
+                                "total-study-time-millis": 0,
+                                "last-study-time": null,
+                                "score": 0.0
+                            }
+                    }
+                ]
             },
             "relationships": {
                 "image": {
@@ -304,4 +336,5 @@ Parameter | Description
 --------- | -----------
 query | Specify a query if you are looking for a single user. The value should be either the member_id or email of the user.
 include_department_users | If specified, users in departments of the partner will also be included.
+include_enrolled_courses | If set to true, each user will have a "course-stats" attribute containing progress and study information.
 page[number] | Results are paginated, use this to choose which page you want
