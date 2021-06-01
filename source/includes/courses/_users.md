@@ -66,29 +66,28 @@ This endpoint retrieves all users that are connected to a specific course.
 
 ### User Object
 
-Attribute | type | Description
---------- | --------- | -----------
-created_at | datetime | When the user was created
-name | string | The name of the user
-username | string | The username of the user
-email | string | The email of the user
-last-logged-in-at | datetime | Time of last log in by the user
-guid | string | An identifier for users that can be used across apps
-status | string | `courses.course_manager.members.studied_via_lti` Student is connected to the course via LTI<br>`courses.course_manager.members.studied` Student has studied the course, but is not an LTI user<br>`courses.course_manager.members.invited` Student has received an invitation to join the course, but has not yet studied<br>`courses.course_manager.members.no_invitation_sent` No invitation has been sent to the user yet
+| Attribute         | type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| created_at        | datetime | When the user was created                                                                                                                                                                                                                                                                                                                                                                                                    |
+| name              | string   | The name of the user                                                                                                                                                                                                                                                                                                                                                                                                         |
+| username          | string   | The username of the user                                                                                                                                                                                                                                                                                                                                                                                                     |
+| email             | string   | The email of the user                                                                                                                                                                                                                                                                                                                                                                                                        |
+| last-logged-in-at | datetime | Time of last log in by the user                                                                                                                                                                                                                                                                                                                                                                                              |
+| guid              | string   | An identifier for users that can be used across apps                                                                                                                                                                                                                                                                                                                                                                         |
+| status            | string   | `courses.course_manager.members.studied_via_lti` Student is connected to the course via LTI<br>`courses.course_manager.members.studied` Student has studied the course, but is not an LTI user<br>`courses.course_manager.members.invited` Student has received an invitation to join the course, but has not yet studied<br>`courses.course_manager.members.no_invitation_sent` No invitation has been sent to the user yet |
 
 ### Meta
 
-Attribute | type | Description
---------- | --------- | -----------
-role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` Can edit: some content (only assigned sets and series)<br>`content_manager` Can manage (add/delete/edit): all content (sets and series)<br>`course_manager` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments<br>`admin` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments + organization level features and users
-can-edit | boolean | The user is allowed to edit the current course
-lti | boolean | The user has an LTI account connected
-progress | float | The user's progress on this specific course (`0.0` is unstarted, `1.0` is complete)
-percent-started | float | The percentage of concepts the user has started (`0.0` to `1.0`)
-last-study-time | datetime | The time which the user last studied this course
-payment-required | boolean | The user needs money to enable this course
-cost | integer | Cost in cents to enable this course
-
+| Attribute        | type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| role             | string   | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` Can edit: some content (only assigned sets and series)<br>`content_manager` Can manage (add/delete/edit): all content (sets and series)<br>`course_manager` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments<br>`admin` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments + organization level features and users |
+| can-edit         | boolean  | The user is allowed to edit the current course                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| lti              | boolean  | The user has an LTI account connected                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| progress         | float    | The user's progress on this specific course (`0.0` is unstarted, `1.0` is complete)                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| percent-started  | float    | The percentage of concepts the user has started (`0.0` to `1.0`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| last-study-time  | datetime | The time which the user last studied this course                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| payment-required | boolean  | The user needs money to enable this course                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| cost             | integer  | Cost in cents to enable this course                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ## Add a user to a course
 
@@ -148,12 +147,11 @@ This endpoint adds a user to a course (or creates a new user if one does not exi
 
 ### Request Parameters
 
-Parameter | Type | Required? | Description
---------- | --------- | --------- | -----------
-email | string | no | The email of the user you wish to add to the course. Required unless you specify member_id.
-member_id | string | no | The member ID of the user you wish to add to the course. A member ID is a unique and unchanging identifier for the user that you have, for example an employee ID.  If you specify this, then you must also specify name, and not specify email.
-name | string | no | The name of the user you wish to add
-
+| Parameter | Type   | Required? | Description                                                                                                                                                                                                                                     |
+| --------- | ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| email     | string | no        | The email of the user you wish to add to the course. Required unless you specify member_id.                                                                                                                                                     |
+| member_id | string | no        | The member ID of the user you wish to add to the course. A member ID is a unique and unchanging identifier for the user that you have, for example an employee ID. If you specify this, then you must also specify name, and not specify email. |
+| name      | string | no        | The name of the user you wish to add                                                                                                                                                                                                            |
 
 <aside class="notice">If an account doesn't already exist, we will send them a welcome email with a link and instructions to set a password.</aside>
 
@@ -236,16 +234,15 @@ This endpoint deletes a user from a course
 
 This endpoint retrieves users in a partner.
 
-
 ```shell
-curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member_id \
+curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member_id&include_enrolled_courses=true\
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer <API_KEY>"
 ```
 
 > If you successfully make your GET request you should receive a response that looks like this:
 
-``` json
+```json
 {
     "data": [
         {
@@ -258,7 +255,39 @@ curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member
                 "email": null,
                 "last-logged-in-at": null,
                 "guid": "f105f8e0-122b-479d-98c7-97as65869de7a",
-                "has-password": false
+                "has-password": false,
+                "course-stats": [
+                    {
+                        "id": 4639,
+                        "title": "Useful References",
+                        "progress": 0.0,
+                        "total-study-time-millis": 0,
+                        "last-study-time": null,
+                        "assignments-data": []
+                    },
+                    {
+                        "id": 10175,
+                        "title": "Sales Demo",
+                        "progress": 0.0,
+                        "total-study-time-millis": 0,
+                        "last-study-time": null,
+                        "assignments-data": [
+                            {
+                                "id": 762921,
+                                "name": "CHAPTER 1: The Scientific Study of Life",
+                                "total-study-time-millis": 0,
+                                "last-study-time": null,
+                                "score": 0.0
+                            },
+                            {
+                                "id": 762925,
+                                "name": "UNIT 1: The Cellular Basis of Life",
+                                "total-study-time-millis": 0,
+                                "last-study-time": null,
+                                "score": 0.0
+                            }
+                    }
+                ]
             },
             "relationships": {
                 "image": {
@@ -300,8 +329,9 @@ curl GET https://partners.cerego.com/v3/partners/:partner_id/users?query=:member
 
 ### Query Parameters
 
-Parameter | Description
---------- | -----------
-query | Specify a query if you are looking for a single user. The value should be either the member_id or email of the user.
-include_department_users | If specified, users in departments of the partner will also be included.
-page[number] | Results are paginated, use this to choose which page you want
+| Parameter                | Description                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| query                    | Specify a query if you are looking for a single user. The value should be either the member_id or email of the user. |
+| include_department_users | If specified, users in departments of the partner will also be included.                                             |
+| include_enrolled_courses | If set to true, each user will have a "course-stats" attribute containing progress and study information.            |
+| page[number]             | Results are paginated, use this to choose which page you want                                                        |
