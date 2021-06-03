@@ -81,7 +81,6 @@ status | string | `courses.course_manager.members.studied_via_lti` Student is co
 Attribute | type | Description
 --------- | --------- | -----------
 role | string | `learner` You are a student in the course <br>`instructor` You are teaching the course without permission to edit<br>`editor` Can edit: some content (only assigned sets and series)<br>`content_manager` Can manage (add/delete/edit): all content (sets and series)<br>`course_manager` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments<br>`admin` Can manage (add/delete/edit): all content (sets and series) + all courses and assignments + organization level features and users
-can-edit | boolean | The user is allowed to edit the current course
 lti | boolean | The user has an LTI account connected
 progress | float | The user's progress on this specific course (`0.0` is unstarted, `1.0` is complete)
 percent-started | float | The percentage of concepts the user has started (`0.0` to `1.0`)
